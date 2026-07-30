@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日の運用ブリーフ 20260730-1747</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #64748b;
+  --line: #dbe1ea;
+  --accent: #0f766e;
+  --warn: #b45309;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  line-height: 1.65;
+}
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+h1 {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+h2 {
+  margin: 28px 0 12px;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-size: 20px;
+}
+ul {
+  margin: 0 0 16px;
+  padding: 14px 18px 14px 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 880px;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: #eef2f7;
+  color: #334155;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+a {
+  color: #075985;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+strong {
+  color: var(--warn);
+}
+p {
+  margin: 0 0 12px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>今日の運用ブリーフ 20260730-1747</h1>
+<h2>結論</h2>
+<ul>
+<li>地合い: RED / score 11。運用モードは <strong>新規買い停止</strong>。</li>
+<li>売買前提: 現物・ミニ株中心、空売りなし。信用建玉との重複買いは禁止。</li>
+<li>短期順張りの即時候補: BUY_READY_MINI 0件。</li>
+<li>M006 GU追い禁止/窓埋め警戒: 15件。</li>
+<li>銘柄別適用ルール登録: 29件。主手法点灯/監視/禁止は候補表の「手法判定」で確認。</li>
+<li>理想乖離候補: 到達/接近 35件。順張り候補とは分けて扱う。</li>
+<li>確信度: 中。TradingViewスナップショット由来のため、発注直前にチャート確認が必要。</li>
+</ul>
+<h2>今日の行動ルール</h2>
+<ul>
+<li>暴落警戒モード。新規買いより、信用・先物・弱い保有の軽量化を優先。</li>
+<li>ミニ株長期も追加禁止。理想乖離到達は監視リスト化に留める。</li>
+<li>短期順張りは当日デイトレの例外だけ。持ち越し前提の買いは禁止。</li>
+<li>買う場合は、買いトリガー、損切り目安、1万円あたり想定リスクを先に確認する。</li>
+<li>ギャップアップで買いトリガーを大きく超えた銘柄は、寄り付きでは追わず、5分足/15分足の押し目を待つ。</li>
+</ul>
+<h2>地合い確認</h2>
+<ul>
+<li>生成時刻: 2026-07-30 17:47:12 +09:00</li>
+<li>日経225 breadth: 上昇 59 / 下落 165 / 25日線上 131 / RED 35 / 強い 10</li>
+</ul>
+<div class="table-wrap"><table><thead><tr>
+<th>対象</th>
+<th>終値</th>
+<th>前日比</th>
+<th>25日乖離</th>
+<th>75日乖離</th>
+<th>RSI</th>
+</tr></thead><tbody>
+<tr>
+<td>日経平均</td>
+<td>61,867.2</td>
+<td>0.71%</td>
+<td>-7.94%</td>
+<td>-4.45%</td>
+<td>36.32</td>
+</tr>
+<tr>
+<td>日経先物</td>
+<td>62,080</td>
+<td>0.60%</td>
+<td>-7.23%</td>
+<td>-4.38%</td>
+<td>37.37</td>
+</tr>
+<tr>
+<td>日経レバ</td>
+<td>61,170</td>
+<td>1.22%</td>
+<td>-16.00%</td>
+<td>-10.93%</td>
+<td>35.71</td>
+</tr>
+<tr>
+<td>SOX</td>
+<td>10,447.5</td>
+<td>-5.33%</td>
+<td>-16.53%</td>
+<td>-12.95%</td>
+<td>32.81</td>
+</tr>
+<tr>
+<td>SMH</td>
+<td>504.22</td>
+<td>-4.79%</td>
+<td>-14.37%</td>
+<td>-11.07%</td>
+<td>32.96</td>
+</tr>
+<tr>
+<td>NASDAQ</td>
+<td>24,442.9</td>
+<td>-1.74%</td>
+<td>-4.73%</td>
+<td>-4.77%</td>
+<td>33.02</td>
+</tr>
+<tr>
+<td>NASDAQ100</td>
+<td>27,192.3</td>
+<td>-2.06%</td>
+<td>-6.49%</td>
+<td>-5.61%</td>
+<td>32.06</td>
+</tr>
+<tr>
+<td>VIX</td>
+<td>19.70</td>
+<td>-4.60%</td>
+<td>13.16%</td>
+<td>11.51%</td>
+<td>56.86</td>
+</tr>
+<tr>
+<td>ドル円</td>
+<td>163.62</td>
+<td>0.13%</td>
+<td>0.64%</td>
+<td>2.01%</td>
+<td>64.38</td>
+</tr>
+<tr>
+<td>米10年金利</td>
+<td>4.70</td>
+<td>0.19%</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+<h2>M023計画の内訳</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>判定</th>
+<th>件数</th>
+</tr></thead><tbody>
+<tr>
+<td>NO_TRADE_TREND_BROKEN</td>
+<td>118</td>
+</tr>
+<tr>
+<td>WATCH_ONLY</td>
+<td>89</td>
+</tr>
+<tr>
+<td>NO_TRADE_RISK</td>
+<td>14</td>
+</tr>
+<tr>
+<td>NO_NEW_BUY_MARGIN_OVERLAP</td>
+<td>4</td>
+</tr>
+</tbody></table></div>
+<h2>銘柄別適用ルールの内訳</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>判定</th>
+<th>件数</th>
+</tr></thead><tbody>
+<tr>
+<td>主手法禁止</td>
+<td>23</td>
+</tr>
+<tr>
+<td>主手法監視</td>
+<td>5</td>
+</tr>
+<tr>
+<td>主手法点灯</td>
+<td>1</td>
+</tr>
+</tbody></table></div>
+<h2>M006 GU追い禁止・窓埋め監視</h2>
+<ul>
+<li>内訳: NO_CHASE_GU:2, GAP_FILL_WATCH:2, GAP_FILL_FAILED:6, REVERSAL_ONLY:5</li>
+<li>ここは買い候補ではなく、寄り付き後に飛びつかないための警戒枠。M023候補でもM006に該当する場合は確認待ちに落とす。</li>
+</ul>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>テーマ</th>
+<th>M006</th>
+<th>GU率</th>
+<th>窓埋め</th>
+<th>行動</th>
+<th>禁止理由</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6857" target="_blank" rel="noopener">6857 アドバンテスト</a></td>
+<td>半導体・AI/DC</td>
+<td>窓埋め監視</td>
+<td>13.02%</td>
+<td>NO</td>
+<td>窓下・前日終値への接近を待つ。5分足で下げ止まり確認。</td>
+<td>大幅GU後に寄り値を下回る。寄り付き追い買い禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6701" target="_blank" rel="noopener">6701 ＮＥＣ</a></td>
+<td>半導体・AI/DC</td>
+<td>GU追い買い禁止</td>
+<td>7.59%</td>
+<td>NO</td>
+<td>大幅GUを追わない。押し目または前日終値側への接近を待つ。</td>
+<td>窓埋め前の寄り付き飛びつきは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6501" target="_blank" rel="noopener">6501 日立製作所</a></td>
+<td>防衛・重工・宇宙</td>
+<td>GU追い買い禁止</td>
+<td>4.90%</td>
+<td>NO</td>
+<td>大幅GUを追わない。押し目または前日終値側への接近を待つ。</td>
+<td>窓埋め前の寄り付き飛びつきは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4543" target="_blank" rel="noopener">4543 テルモ</a></td>
+<td>医薬・食品・防御</td>
+<td>窓埋め監視</td>
+<td>2.90%</td>
+<td>NO</td>
+<td>窓下・前日終値への接近を待つ。5分足で下げ止まり確認。</td>
+<td>大幅GU後に寄り値を下回る。寄り付き追い買い禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9602" target="_blank" rel="noopener">9602 東宝</a></td>
+<td>内需・小売・通信</td>
+<td>窓下割れ・買い禁止</td>
+<td>2.50%</td>
+<td>YES</td>
+<td>窓下・前日終値を回復するまで買わない。</td>
+<td>GU後に窓埋め失敗。寄り天/地合い悪化の疑い。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6532" target="_blank" rel="noopener">6532 ベイカレント</a></td>
+<td>その他225</td>
+<td>窓下割れ・買い禁止</td>
+<td>1.81%</td>
+<td>YES</td>
+<td>窓下・前日終値を回復するまで買わない。</td>
+<td>GU後に窓埋め失敗。寄り天/地合い悪化の疑い。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7974" target="_blank" rel="noopener">7974 任天堂</a></td>
+<td>内需・小売・通信</td>
+<td>窓下反発確認のみ</td>
+<td>1.72%</td>
+<td>YES</td>
+<td>窓下・前日終値付近で反発確認後だけ当日リバ小ロット。持ち越し根拠にしない。</td>
+<td>反発確認前の値ごろ買いは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A285A" target="_blank" rel="noopener">285A キオクシアホールディングス</a></td>
+<td>半導体・AI/DC</td>
+<td>窓下反発確認のみ</td>
+<td>1.62%</td>
+<td>YES</td>
+<td>窓下・前日終値付近で反発確認後だけ当日リバ小ロット。持ち越し根拠にしない。</td>
+<td>反発確認前の値ごろ買いは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3697" target="_blank" rel="noopener">3697 ＳＨＩＦＴ</a></td>
+<td>その他225</td>
+<td>窓下割れ・買い禁止</td>
+<td>1.58%</td>
+<td>YES</td>
+<td>窓下・前日終値を回復するまで買わない。</td>
+<td>GU後に窓埋め失敗。寄り天/地合い悪化の疑い。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2801" target="_blank" rel="noopener">2801 キッコーマン</a></td>
+<td>医薬・食品・防御</td>
+<td>窓下割れ・買い禁止</td>
+<td>1.49%</td>
+<td>YES</td>
+<td>窓下・前日終値を回復するまで買わない。</td>
+<td>GU後に窓埋め失敗。寄り天/地合い悪化の疑い。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7751" target="_blank" rel="noopener">7751 キヤノン</a></td>
+<td>その他225</td>
+<td>窓下割れ・買い禁止</td>
+<td>1.38%</td>
+<td>YES</td>
+<td>窓下・前日終値を回復するまで買わない。</td>
+<td>GU後に窓埋め失敗。寄り天/地合い悪化の疑い。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6770" target="_blank" rel="noopener">6770 アルプスアルパイン</a></td>
+<td>その他225</td>
+<td>窓下反発確認のみ</td>
+<td>1.28%</td>
+<td>YES</td>
+<td>窓下・前日終値付近で反発確認後だけ当日リバ小ロット。持ち越し根拠にしない。</td>
+<td>反発確認前の値ごろ買いは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6702" target="_blank" rel="noopener">6702 富士通</a></td>
+<td>半導体・AI/DC</td>
+<td>窓下反発確認のみ</td>
+<td>1.14%</td>
+<td>YES</td>
+<td>窓下・前日終値付近で反発確認後だけ当日リバ小ロット。持ち越し根拠にしない。</td>
+<td>反発確認前の値ごろ買いは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4385" target="_blank" rel="noopener">4385 メルカリ</a></td>
+<td>その他225</td>
+<td>窓下割れ・買い禁止</td>
+<td>1.09%</td>
+<td>YES</td>
+<td>窓下・前日終値を回復するまで買わない。</td>
+<td>GU後に窓埋め失敗。寄り天/地合い悪化の疑い。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4307" target="_blank" rel="noopener">4307 野村総合研究所</a></td>
+<td>その他225</td>
+<td>窓下反発確認のみ</td>
+<td>1.04%</td>
+<td>YES</td>
+<td>窓下・前日終値付近で反発確認後だけ当日リバ小ロット。持ち越し根拠にしない。</td>
+<td>反発確認前の値ごろ買いは禁止。 地合いREDではM006反発狙いを小ロット以下に制限。</td>
+</tr>
+</tbody></table></div>
+<h2>まず見る短期順張り候補</h2>
+<p>_該当なし_</p>
+<h2>確認後にミニ株検討</h2>
+<p>_該当なし_</p>
+<h2>監視のみ</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>テーマ</th>
+<th>計画</th>
+<th>点</th>
+<th>主手法</th>
+<th>手法判定</th>
+<th>M023</th>
+<th>押し目</th>
+<th>高値比</th>
+<th>25乖離</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5101" target="_blank" rel="noopener">5101 横浜ゴム</a></td>
+<td>自動車・円安外需</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>156</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-5.80%</td>
+<td>1.15%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6473" target="_blank" rel="noopener">6473 ジェイテクト</a></td>
+<td>その他225</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>156</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-4.33%</td>
+<td>1.25%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4578" target="_blank" rel="noopener">4578 大塚ホールディングス</a></td>
+<td>医薬・食品・防御</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>134</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-5.08%</td>
+<td>1.59%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8354" target="_blank" rel="noopener">8354 ふくおかフィナンシャルグループ</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>128</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-6.64%</td>
+<td>0.15%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8309" target="_blank" rel="noopener">8309 三井住友トラストグループ</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>128</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-4.39%</td>
+<td>2.48%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8795" target="_blank" rel="noopener">8795 Ｔ＆Ｄホールディングス</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>128</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.01%</td>
+<td>1.60%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8253" target="_blank" rel="noopener">8253 クレディセゾン</a></td>
+<td>内需・小売・通信</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>127</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-7.29%</td>
+<td>0.17%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9107" target="_blank" rel="noopener">9107 川崎汽船</a></td>
+<td>商社・海運</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>126</td>
+<td>M010</td>
+<td>主手法禁止</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.47%</td>
+<td>8.71%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8766" target="_blank" rel="noopener">8766 東京海上ホールディングス</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>125</td>
+<td>M010</td>
+<td>主手法監視</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.14%</td>
+<td>6.61%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8304" target="_blank" rel="noopener">8304 あおぞら銀行</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>125</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.05%</td>
+<td>4.69%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8750" target="_blank" rel="noopener">8750 第一ライフグループ</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>125</td>
+<td>M010</td>
+<td>主手法監視</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.11%</td>
+<td>2.60%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4502" target="_blank" rel="noopener">4502 武田薬品工業</a></td>
+<td>医薬・食品・防御</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>124</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-5.22%</td>
+<td>5.48%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2269" target="_blank" rel="noopener">2269 明治ホールディングス</a></td>
+<td>医薬・食品・防御</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>124</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.16%</td>
+<td>3.70%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6861" target="_blank" rel="noopener">6861 キーエンス</a></td>
+<td>半導体・AI/DC</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>123</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-6.18%</td>
+<td>3.59%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6098" target="_blank" rel="noopener">6098 リクルートホールディングス</a></td>
+<td>その他225</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>120</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-3.04%</td>
+<td>5.90%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6724" target="_blank" rel="noopener">6724 セイコーエプソン</a></td>
+<td>その他225</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>120</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-5.39%</td>
+<td>4.02%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8601" target="_blank" rel="noopener">8601 大和証券グループ本社</a></td>
+<td>金融・保険・証券</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>120</td>
+<td>M010</td>
+<td>主手法点灯</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-4.98%</td>
+<td>1.92%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9201" target="_blank" rel="noopener">9201 日本航空</a></td>
+<td>その他225</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>118</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-8.97%</td>
+<td>1.45%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4151" target="_blank" rel="noopener">4151 協和キリン</a></td>
+<td>その他225</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>118</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-9.00%</td>
+<td>0.42%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6770" target="_blank" rel="noopener">6770 アルプスアルパイン</a></td>
+<td>その他225</td>
+<td>監視のみ。25日線回復、安値切り上げ、指数悪化なしを待つ。</td>
+<td>113</td>
+<td></td>
+<td>未登録</td>
+<td>順張り押し目監視</td>
+<td>押し目 3-10%</td>
+<td>-6.39%</td>
+<td>6.19%</td>
+</tr>
+</tbody></table></div>
+<h2>保有・信用重複で新規禁止</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>テーマ</th>
+<th>計画</th>
+<th>点</th>
+<th>主手法</th>
+<th>手法判定</th>
+<th>M023</th>
+<th>押し目</th>
+<th>高値比</th>
+<th>25乖離</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6479" target="_blank" rel="noopener">6479 ミネベアミツミ</a></td>
+<td>その他225</td>
+<td>信用または既存保有と重複。新規買い禁止、軽量化優先。</td>
+<td>-206</td>
+<td>M010</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-33.82%</td>
+<td>-17.78%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7012" target="_blank" rel="noopener">7012 川崎重工業</a></td>
+<td>防衛・重工・宇宙</td>
+<td>信用または既存保有と重複。新規買い禁止、軽量化優先。</td>
+<td>-218</td>
+<td>M023</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-28.74%</td>
+<td>-3.34%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9984" target="_blank" rel="noopener">9984 ソフトバンクグループ</a></td>
+<td>その他225</td>
+<td>信用または既存保有と重複。新規買い禁止、軽量化優先。</td>
+<td>-304</td>
+<td>M023</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-49.06%</td>
+<td>-21.15%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7011" target="_blank" rel="noopener">7011 三菱重工業</a></td>
+<td>防衛・重工・宇宙</td>
+<td>信用または既存保有と重複。新規買い禁止、軽量化優先。</td>
+<td>-323</td>
+<td>M023</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-28.26%</td>
+<td>-1.69%</td>
+</tr>
+</tbody></table></div>
+<h2>理想乖離の到達・接近</h2>
+<ul>
+<li>内訳: REACHED_3SIGMA:22, NOT_REACHED:166, OVERHEAT_2SIGMA:18, REACHED_2SIGMA:12, NEAR_2SIGMA:1</li>
+<li>ここは逆張り・長期ミニ株候補の確認枠。M023短期順張りとは別管理。</li>
+</ul>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>テーマ</th>
+<th>理想乖離</th>
+<th>終値</th>
+<th>25乖離</th>
+<th>2σまで</th>
+<th>行動</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2802" target="_blank" rel="noopener">2802 味の素</a></td>
+<td>医薬・食品・防御</td>
+<td>深い理想乖離到達</td>
+<td>4,839</td>
+<td>-12.58%</td>
+<td>-4.33%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9502" target="_blank" rel="noopener">9502 中部電力</a></td>
+<td>電力・ガス・資源</td>
+<td>深い理想乖離到達</td>
+<td>2,706</td>
+<td>-10.87%</td>
+<td>-4.37%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7731" target="_blank" rel="noopener">7731 ニコン</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>1,840</td>
+<td>-15.93%</td>
+<td>-5.46%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4043" target="_blank" rel="noopener">4043 トクヤマ</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>3,801</td>
+<td>-18.59%</td>
+<td>-7.60%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4004" target="_blank" rel="noopener">4004 レゾナック・ホールディングス</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>12,125</td>
+<td>-22.34%</td>
+<td>-8.10%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4061" target="_blank" rel="noopener">4061 デンカ</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>3,259</td>
+<td>-16.78%</td>
+<td>-8.36%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5706" target="_blank" rel="noopener">5706 三井金属</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>27,095</td>
+<td>-23.18%</td>
+<td>-8.56%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4063" target="_blank" rel="noopener">4063 信越化学工業</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>5,756</td>
+<td>-17.03%</td>
+<td>-8.60%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6920" target="_blank" rel="noopener">6920 レーザーテック</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>33,620</td>
+<td>-24.92%</td>
+<td>-8.85%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8035" target="_blank" rel="noopener">8035 東京エレクトロン</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>52,240</td>
+<td>-23.76%</td>
+<td>-10.20%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5801" target="_blank" rel="noopener">5801 古河電気工業</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>2,777.5</td>
+<td>-25.06%</td>
+<td>-10.83%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5803" target="_blank" rel="noopener">5803 フジクラ</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>3,720</td>
+<td>-25.83%</td>
+<td>-11.62%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6963" target="_blank" rel="noopener">6963 ローム</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>3,891</td>
+<td>-23.34%</td>
+<td>-11.64%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6146" target="_blank" rel="noopener">6146 ディスコ</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>51,870</td>
+<td>-26.46%</td>
+<td>-12.10%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6506" target="_blank" rel="noopener">6506 安川電機</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>4,544</td>
+<td>-25.23%</td>
+<td>-12.81%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5333" target="_blank" rel="noopener">5333 ＮＧＫ</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>5,245</td>
+<td>-21.72%</td>
+<td>-13.47%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7735" target="_blank" rel="noopener">7735 ＳＣＲＥＥＮホールディングス</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>11,980</td>
+<td>-29.17%</td>
+<td>-15.07%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4062" target="_blank" rel="noopener">4062 イビデン</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>13,650</td>
+<td>-30.29%</td>
+<td>-17.34%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3436" target="_blank" rel="noopener">3436 ＳＵＭＣＯ</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>2,856.5</td>
+<td>-32.45%</td>
+<td>-17.44%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6981" target="_blank" rel="noopener">6981 村田製作所</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>6,416</td>
+<td>-30.49%</td>
+<td>-20.28%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A285A" target="_blank" rel="noopener">285A キオクシアホールディングス</a></td>
+<td>半導体・AI/DC</td>
+<td>深い理想乖離到達</td>
+<td>39,500</td>
+<td>-43.45%</td>
+<td>-22.98%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6976" target="_blank" rel="noopener">6976 太陽誘電</a></td>
+<td>その他225</td>
+<td>深い理想乖離到達</td>
+<td>8,723</td>
+<td>-40.16%</td>
+<td>-25.47%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6113" target="_blank" rel="noopener">6113 アマダ</a></td>
+<td>その他225</td>
+<td>理想乖離到達</td>
+<td>2,620.5</td>
+<td>-10.33%</td>
+<td>-0.57%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5214" target="_blank" rel="noopener">5214 日本電気硝子</a></td>
+<td>その他225</td>
+<td>理想乖離到達</td>
+<td>5,130</td>
+<td>-13.40%</td>
+<td>-1.15%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6762" target="_blank" rel="noopener">6762 ＴＤＫ</a></td>
+<td>半導体・AI/DC</td>
+<td>理想乖離到達</td>
+<td>2,811.5</td>
+<td>-14.47%</td>
+<td>-3.17%</td>
+<td>スイング第1候補。分割1回目だけ検討。</td>
+</tr>
+</tbody></table></div>
+<h2>触らない候補</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>テーマ</th>
+<th>計画</th>
+<th>点</th>
+<th>主手法</th>
+<th>手法判定</th>
+<th>M023</th>
+<th>押し目</th>
+<th>高値比</th>
+<th>25乖離</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1803" target="_blank" rel="noopener">1803 清水建設</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-320</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-35.95%</td>
+<td>-7.50%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1812" target="_blank" rel="noopener">1812 鹿島建設</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-312</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-33.06%</td>
+<td>-6.20%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7741" target="_blank" rel="noopener">7741 ＨＯＹＡ</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-294</td>
+<td>M010</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-21.58%</td>
+<td>-5.14%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1801" target="_blank" rel="noopener">1801 大成建設</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-294</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-36.90%</td>
+<td>-6.37%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5714" target="_blank" rel="noopener">5714 ＤＯＷＡホールディングス</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-294</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-35.46%</td>
+<td>-5.38%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5711" target="_blank" rel="noopener">5711 三菱マテリアル</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-294</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-35.18%</td>
+<td>-6.06%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4519" target="_blank" rel="noopener">4519 中外製薬</a></td>
+<td>医薬・食品・防御</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-282</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-33.92%</td>
+<td>-3.48%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5713" target="_blank" rel="noopener">5713 住友金属鉱山</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-276</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-44.14%</td>
+<td>-0.27%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A543A" target="_blank" rel="noopener">543A アーキオン</a></td>
+<td>その他225</td>
+<td>既存リスク判定が悪い。新規禁止。</td>
+<td>-274</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-51.25%</td>
+<td>-7.24%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5214" target="_blank" rel="noopener">5214 日本電気硝子</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-267</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-38.76%</td>
+<td>-13.40%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4506" target="_blank" rel="noopener">4506 住友ファーマ</a></td>
+<td>医薬・食品・防御</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-267</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-60.75%</td>
+<td>-7.16%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5201" target="_blank" rel="noopener">5201 ＡＧＣ</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-266</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-28.14%</td>
+<td>-8.33%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5301" target="_blank" rel="noopener">5301 東海カーボン</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-266</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-20.13%</td>
+<td>-8.14%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6506" target="_blank" rel="noopener">6506 安川電機</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-259</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-42.59%</td>
+<td>-25.23%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6526" target="_blank" rel="noopener">6526 ソシオネクスト</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-255</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-40.83%</td>
+<td>-24.82%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5803" target="_blank" rel="noopener">5803 フジクラ</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-251</td>
+<td>M023</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-53.11%</td>
+<td>-25.83%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5706" target="_blank" rel="noopener">5706 三井金属</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-249</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-53.04%</td>
+<td>-23.18%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4061" target="_blank" rel="noopener">4061 デンカ</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-249</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-30.54%</td>
+<td>-16.78%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7731" target="_blank" rel="noopener">7731 ニコン</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-247</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-23.01%</td>
+<td>-15.93%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4043" target="_blank" rel="noopener">4043 トクヤマ</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-247</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-34.10%</td>
+<td>-18.59%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6146" target="_blank" rel="noopener">6146 ディスコ</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-241</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-43.42%</td>
+<td>-26.46%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5802" target="_blank" rel="noopener">5802 住友電気工業</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-241</td>
+<td>M023</td>
+<td>主手法禁止</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-43.18%</td>
+<td>-16.35%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4063" target="_blank" rel="noopener">4063 信越化学工業</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-241</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-27.41%</td>
+<td>-17.03%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6920" target="_blank" rel="noopener">6920 レーザーテック</a></td>
+<td>半導体・AI/DC</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-231</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-42.61%</td>
+<td>-24.92%</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7911" target="_blank" rel="noopener">7911 ＴＯＰＰＡＮホールディングス</a></td>
+<td>その他225</td>
+<td>押しが深い。順張りでは触らない。</td>
+<td>-229</td>
+<td></td>
+<td>未登録</td>
+<td>下降トレンド疑い</td>
+<td>20%以上下落</td>
+<td>-26.70%</td>
+<td>-12.42%</td>
+</tr>
+</tbody></table></div>
+<h2>見落としやすいリスク</h2>
+<ul>
+<li>YELLOW以上の警戒時は、良い個別チャートでも指数の再下落で一斉に崩れやすい。</li>
+<li>半導体・AIはSOX/SMHが25日線を下回る局面では、個別の好材料より指数主導の売りが勝ちやすい。</li>
+<li>理想乖離到達は「安い」ではなく「下げ止まり確認の監視開始」。短期順張りの買い条件とは違う。</li>
+<li>信用建玉が残る間は、同テーマ・同方向の現物買いも実質的にリスクを増やす。</li>
+<li>このブリーフは再集計時点のスナップショット。発注前にTradingViewで出来高、5MA/25MA、前日高値、当日安値割れを確認する。</li>
+</ul>
+<h2>参照ファイル</h2>
+<ul>
+<li>outputs\tradingview_current_risk_report_20260730-1747.md</li>
+<li>outputs\index_tradingview_snapshot_20260730-1747.csv</li>
+<li>outputs\panda_kairi_signals_20260730-1747.csv</li>
+<li>outputs\m023_momentum_trade_plan_20260730-1747.csv</li>
+</ul>
+</main>
+</body>
+</html>
