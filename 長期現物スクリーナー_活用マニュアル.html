@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>長期現物スクリーナー 活用マニュアル</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #64748b;
+  --line: #dbe1ea;
+  --accent: #0f766e;
+  --warn: #b45309;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  line-height: 1.65;
+}
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+h1 {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+h2 {
+  margin: 28px 0 12px;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-size: 20px;
+}
+ul {
+  margin: 0 0 16px;
+  padding: 14px 18px 14px 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 880px;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: #eef2f7;
+  color: #334155;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+a {
+  color: #075985;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+strong {
+  color: var(--warn);
+}
+p {
+  margin: 0 0 12px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>長期現物スクリーナー 活用マニュアル</h1>
+<ul>
+<li>作成日: 2026-08-03</li>
+<li>対象: `long_term_value_screen_*.html`</li>
+<li>目的: 日経225銘柄から「理想乖離」または「目標配当利回り」に達した長期現物候補を抽出し、財務品質・チャート・最新IRの順で絞り込む</li>
+<li>前提: このスクリーナーは候補発見用であり、自動的な買い推奨ではない</li>
+</ul>
+<h2>1. このスクリーナーでできること</h2>
+<p>長期保有候補を、次の3段階で整理します。</p>
+<p>1. <strong>一次トリガー</strong>: 理想乖離または目標配当利回りへの到達を検出する。</p>
+<p>2. <strong>財務品質判定</strong>: 利益、EPS、配当性向、ROE、負債などを機械判定する。</p>
+<p>3. <strong>最終確認</strong>: TradingViewチャートと最新IRを人が確認し、実際に買うか判断する。</p>
+<p>短期のモメンタム順張り候補を探すレポートではありません。急落した銘柄を無条件に拾う仕組みでもありません。</p>
+<h2>2. 画面上部の表示</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>表示</th>
+<th>意味</th>
+<th>注意点</th>
+</tr></thead><tbody>
+<tr>
+<td>取得日時</td>
+<td>レポートを作成した日時</td>
+<td>市場取引中と大引け後では値が異なる</td>
+</tr>
+<tr>
+<td>基準時点</td>
+<td>元となった再集計データの日時</td>
+<td>レポート名の日時と照合する</td>
+</tr>
+<tr>
+<td>株価・財務種別</td>
+<td>データの取得元と価格の性質</td>
+<td>株価・予想利回り・実績利回りはTradingViewの別々の列を使用</td>
+</tr>
+<tr>
+<td>対象銘柄数</td>
+<td>判定した銘柄数</td>
+<td>通常は日経225の225銘柄</td>
+</tr>
+<tr>
+<td>`PERIOD_UNKNOWN`</td>
+<td>財務値の会計期間を取得元だけでは特定できない</td>
+<td>最新決算短信・会社予想で確認が必要</td>
+</tr>
+</tbody></table></div>
+<h2>3. 判定区分</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>判定</th>
+<th>意味</th>
+<th>基本行動</th>
+</tr></thead><tbody>
+<tr>
+<td>最終確認候補</td>
+<td>一次トリガー到達かつ財務品質が機械判定で合格</td>
+<td>チャートと最新IRを確認。条件がそろえば少額の第1段階を検討</td>
+</tr>
+<tr>
+<td>財務・決算確認待ち</td>
+<td>一次トリガーには到達したが、財務値の不足や確認事項がある</td>
+<td>買わずに最新IRを確認。確認が終わるまで監視扱い</td>
+</tr>
+<tr>
+<td>買い禁止・財務不合格</td>
+<td>赤字、EPS不良、配当性向過大などの除外条件に抵触</td>
+<td>乖離や利回りが魅力的でも原則買わない</td>
+</tr>
+<tr>
+<td>接近監視</td>
+<td>一次トリガーの近くまで来ている</td>
+<td>アラート候補。到達前に先回り買いしない</td>
+</tr>
+<tr>
+<td>条件未到達</td>
+<td>理想乖離・目標利回りのいずれにも未到達</td>
+<td>通常監視。長期の新規買い候補からは外す</td>
+</tr>
+</tbody></table></div>
+<h2>4. 一覧表の各列</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>列</th>
+<th>読み方</th>
+</tr></thead><tbody>
+<tr>
+<td>銘柄</td>
+<td>銘柄コードと日本語名。クリックすると自分のTradingViewレイアウトで開く</td>
+</tr>
+<tr>
+<td>判定</td>
+<td>上記5区分による総合的な機械判定</td>
+</tr>
+<tr>
+<td>一次トリガー</td>
+<td>`理想乖離到達`、`配当利回り到達`、両方到達、または未到達</td>
+</tr>
+<tr>
+<td>予想利回り</td>
+<td>TradingViewの配当利回り予測値。高配当到達判定の正</td>
+</tr>
+<tr>
+<td>実績利回り</td>
+<td>TradingViewの過去12か月普通配当ベース。参考表示であり、高配当到達判定には使わない</td>
+</tr>
+<tr>
+<td>目標利回り</td>
+<td>テーマ別に設定した監視水準。絶対的な割安保証ではない</td>
+</tr>
+<tr>
+<td>理想乖離</td>
+<td>25日移動平均線からの乖離が、銘柄別の過去分布で何σの位置かを示す</td>
+</tr>
+<tr>
+<td>品質</td>
+<td>`PASS`、`REVIEW`、`REJECT`による財務品質判定</td>
+</tr>
+<tr>
+<td>再集計時点の推移</td>
+<td>保存済み再集計データの終値推移。日足チャートそのものではない</td>
+</tr>
+</tbody></table></div>
+<h2>4.1 予想利回りと実績利回りの違い</h2>
+<ul>
+<li><strong>予想利回り</strong>: TradingViewの `dividend_yield_recent` を使用する。公式定義上の「配当利回り（予測値）」で、高配当到達判定はこちらだけを使う。</li>
+<li><strong>実績利回り</strong>: TradingViewの `dividends_yield_current` を使用する。特別配当を除く直近12か月の普通配当ベースで、比較参考値とする。</li>
+<li>TradingView公式定義: <a href="https://jp.tradingview.com/support/solutions/43000723197/" target="_blank" rel="noopener">配当利回り</a></li>
+<li>SBI証券の表示値とは、株価更新時刻、会社予想の反映時刻、データ提供元、配当の年換算方法により小幅な差が出る場合がある。</li>
+<li>差が大きい場合は、最新決算短信の年間配当予想を最優先で確認する。</li>
+</ul>
+<p>### 特殊な表示</p>
+<div class="table-wrap"><table><thead><tr>
+<th>表示</th>
+<th>意味</th>
+</tr></thead><tbody>
+<tr>
+<td>`NOT_CONFIGURED`</td>
+<td>そのテーマでは目標配当利回りを使わない、または個別設定がない</td>
+</tr>
+<tr>
+<td>`UNKNOWN`</td>
+<td>元データで値を確認できない</td>
+</tr>
+<tr>
+<td>`NOT_FETCHED`</td>
+<td>データ取得を実行していない、または取得対象外</td>
+</tr>
+<tr>
+<td>`STALE`</td>
+<td>データが許容期間より古い</td>
+</tr>
+<tr>
+<td>`CALC_ERROR`</td>
+<td>計算処理に失敗した</td>
+</tr>
+<tr>
+<td>`PASS`</td>
+<td>現在の機械条件を通過</td>
+</tr>
+<tr>
+<td>`REVIEW`</td>
+<td>不足値または例外があり、人による確認が必要</td>
+</tr>
+<tr>
+<td>`REJECT`</td>
+<td>除外条件に抵触</td>
+</tr>
+</tbody></table></div>
+<h2>5. 終値チャートの緑と赤</h2>
+<p>色は、表示されている再集計履歴の<strong>最初の終値と最後の終値</strong>だけを比較しています。</p>
+<ul>
+<li><strong>緑</strong>: 最後の終値が最初の終値以上</li>
+<li><strong>赤</strong>: 最後の終値が最初の終値未満</li>
+</ul>
+<p>最大60回分の再集計時点を線で結びます。毎営業日の同時刻に取得した正規の日足ではなく、再集計を実行した時点のスナップショットです。</p>
+<p>### 色分けのメリット</p>
+<ul>
+<li>表全体を見た瞬間に、上向き・下向きの候補を分けられる。</li>
+<li>理想乖離到達後に反発へ移った銘柄と、まだ下落が続く銘柄を区別しやすい。</li>
+<li>候補が多いときの確認順序を決めやすい。</li>
+</ul>
+<p>### 色だけで判断してはいけない理由</p>
+<ul>
+<li>当日の前日比を示す色ではない。</li>
+<li>緑でも高値追いの局面がある。</li>
+<li>赤でも下げ止まり直前の場合がある。</li>
+<li>始点と終点の比較なので、途中の値動きや出来高は色に反映されない。</li>
+<li>色は売買シグナルではなく、確認優先順位を決める補助情報である。</li>
+</ul>
+<h2>6. 判定と色の組み合わせ</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>組み合わせ</th>
+<th>解釈</th>
+<th>行動</th>
+</tr></thead><tbody>
+<tr>
+<td>最終確認候補 + 緑</td>
+<td>条件到達後に戻り基調、または上向きを維持</td>
+<td>高値追いを避け、5日線・25日線への押しや出来高を確認</td>
+</tr>
+<tr>
+<td>最終確認候補 + 赤</td>
+<td>割安条件には到達したが下落が継続</td>
+<td>すぐ買わず、安値切り上げ・陰線縮小・25日線乖離縮小を待つ</td>
+</tr>
+<tr>
+<td>財務確認待ち + 緑</td>
+<td>株価は強いが財務確認が未完了</td>
+<td>チャートの強さを理由に買わず、最新IRを優先</td>
+</tr>
+<tr>
+<td>財務確認待ち + 赤</td>
+<td>財務不明点と下落継続が重なる</td>
+<td>優先度を下げる。悪材料の有無を確認</td>
+</tr>
+<tr>
+<td>接近監視 + 緑</td>
+<td>条件未到達のまま相対的に強い</td>
+<td>先回りせず、目標到達または押し目形成を待つ</td>
+</tr>
+<tr>
+<td>接近監視 + 赤</td>
+<td>条件へ近づきながら下落中</td>
+<td>アラートを設定し、到達後も下げ止まり確認を優先</td>
+</tr>
+<tr>
+<td>買い禁止 + 緑/赤</td>
+<td>財務除外条件に抵触</td>
+<td>色にかかわらず原則見送る</td>
+</tr>
+</tbody></table></div>
+<p>赤線が横ばいになり、安値を切り上げ始めた銘柄は確認価値が高まります。ただし、始点より終点が低い間は赤のままなので、線の形も見てください。</p>
+<h2>7. 財務品質判定の考え方</h2>
+<p>現在の機械判定は、テーマ別設定を基に次の項目を確認します。</p>
+<ul>
+<li>純利益が黒字か</li>
+<li>EPSがプラスか</li>
+<li>配当性向が設定範囲内か</li>
+<li>ROEが最低基準を満たすか</li>
+<li>負債資本倍率が上限内か</li>
+<li>金融株など、負債指標を単純比較できない業種の例外が適用されているか</li>
+<li>個別銘柄の手動設定があるか</li>
+</ul>
+<p>`PASS`は「買ってよい」ではなく「機械的な最低条件を通過した」という意味です。最新IRでは、次も別途確認します。</p>
+<ul>
+<li>通期会社予想の下方修正</li>
+<li>減配・無配転落の可能性</li>
+<li>営業キャッシュフローとフリーキャッシュフロー</li>
+<li>一過性利益による見かけ上の黒字</li>
+<li>自社株買い、増資、CBなどの需給材料</li>
+<li>長期テーマまたは安定収益源が残っているか</li>
+</ul>
+<h2>8. 再集計後の実用手順</h2>
+<p>1. <strong>全体地合いを確認</strong>: 暴落警戒がREDなら、最終確認候補でも新規買いを急がない。</p>
+<p>2. <strong>判定で絞る</strong>: 最終確認候補、財務確認待ち、接近監視の順に見る。</p>
+<p>3. <strong>チャート色で順序を付ける</strong>: 反発確認を重視するなら緑、深い押し目の監視なら赤を先に見る。</p>
+<p>4. <strong>線の形を見る</strong>: 赤から横ばい、安値切り上げ、緑で高値切り下げなどを確認する。</p>
+<p>5. <strong>銘柄名または小型チャートをクリック</strong>: TradingViewの日足を開く。</p>
+<p>6. <strong>TradingViewで確認</strong>: 5MA、25MA、75MA、出来高、安値切り上げ、窓、節目価格を確認する。</p>
+<p>7. <strong>最新IRを確認</strong>: 決算短信、業績予想、配当予想、キャッシュフローを確認する。</p>
+<p>8. <strong>購入計画を決める</strong>: 一括ではなく、ミニ株の第1段階、追加条件、撤退条件を先に決める。</p>
+<h2>9. 長期現物の基本的な買い方</h2>
+<ul>
+<li>初回は予定総額の20%から30%を目安にする。</li>
+<li>追加は「さらに下がったから」ではなく、あらかじめ決めた条件で行う。</li>
+<li>例: 理想乖離到達後の下げ止まり、第1四半期決算の確認、25日線回復、業績予想維持。</li>
+<li>含み損を埋めるための無計画なナンピンはしない。</li>
+<li>同一テーマへの集中を避ける。半導体、重工、防衛を複数持っても、地合い悪化時には同時に下がりやすい。</li>
+<li>予想配当利回りは会社予想1株配当を基にするため、減配・予想修正で前提が崩れる。</li>
+<li>予想配当を取得できない場合、実績利回りへ自動代替せず `NOT_FETCHED` 等を表示する。</li>
+</ul>
+<h2>10. 短期トレードとの分離</h2>
+<ul>
+<li><strong>長期現物</strong>: 理想乖離、配当、財務品質、長期テーマを重視する。</li>
+<li><strong>短期順張り</strong>: 出来高、5MA・25MA、直近高値、GU/GD、相対強度を重視する。</li>
+<li>長期候補が赤だからデイトレで逆張りする、緑だから短期で追いかける、という使い方はしない。</li>
+<li>短期利益を長期現物へ回す場合も、長期スクリーナーの条件到達を待つ。</li>
+</ul>
+<h2>11. 設定ファイル</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>ファイル</th>
+<th>用途</th>
+</tr></thead><tbody>
+<tr>
+<td>`inputs/long_term_screening/theme_rules.csv`</td>
+<td>テーマ別の目標利回り、配当性向、ROE、負債上限を設定</td>
+</tr>
+<tr>
+<td>`inputs/long_term_screening/symbol_overrides.csv`</td>
+<td>個別銘柄だけ異なる条件を適用</td>
+</tr>
+<tr>
+<td>`inputs/long_term_screening/README.md`</td>
+<td>設定方法の簡易説明</td>
+</tr>
+</tbody></table></div>
+<p>現在の目標値は初期運用値です。実績を蓄積し、業種特性や減配事例を見ながら調整します。条件を緩めすぎると候補数だけが増えるため、変更時は理由と日付を残します。</p>
+<h2>12. よくある誤用</h2>
+<ul>
+<li>`PASS`だけを見て即日買う。</li>
+<li>赤線を「底値」、緑線を「上昇確定」と解釈する。</li>
+<li>高配当を安全性と同一視する。</li>
+<li>最新決算や減配発表を確認しない。</li>
+<li>急落日に複数銘柄を一括購入する。</li>
+<li>同じテーマの銘柄を分散投資と誤認する。</li>
+<li>長期投資の判断と短期トレードの損益を混ぜる。</li>
+</ul>
+<h2>13. Codexへの依頼例</h2>
+<ul>
+<li>「最新の長期現物スクリーナーの最終確認候補を、チャートと最新IRで精査してください」</li>
+<li>「財務・決算確認待ち銘柄の不足項目を最新決算で確認してください」</li>
+<li>「接近監視から、配当の安全性と長期テーマで優先順位を付けてください」</li>
+<li>「最終確認候補のうち、赤線が横ばい化した銘柄を抽出してください」</li>
+<li>「保有銘柄とのテーマ重複を考慮し、ミニ株の購入順と上限額を作ってください」</li>
+</ul>
+<h2>14. 購入前チェックリスト</h2>
+<ul>
+<li>[ ] 暴落警戒レベルと米国市場の状況を確認した</li>
+<li>[ ] 一次トリガーの種類と到達幅を確認した</li>
+<li>[ ] 品質が`PASS`、または`REVIEW`の確認を完了した</li>
+<li>[ ] TradingViewで日足・出来高・安値切り上げを確認した</li>
+<li>[ ] 最新決算、会社予想、配当予想を確認した</li>
+<li>[ ] 減配、増資、業績下方修正のリスクを確認した</li>
+<li>[ ] 保有銘柄とのテーマ重複を確認した</li>
+<li>[ ] 初回金額、追加条件、撤退条件を決めた</li>
+<li>[ ] 生活資金や追加入金を前提にしていない</li>
+</ul>
+<h2>15. 最終原則</h2>
+<p>このスクリーナーの役割は、<strong>安く見える銘柄を買うことではなく、確認に値する銘柄を漏れなく、順序立てて見つけること</strong>です。</p>
+<p>最終判断は、`一次トリガー + 財務品質 + 最新IR + チャートの下げ止まり + 資金管理`がそろったときに行います。</p>
+</main>
+</body>
+</html>
