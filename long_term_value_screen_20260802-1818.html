@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>長期現物スクリーナー 20260802-1818</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #64748b;
+  --line: #dbe1ea;
+  --accent: #0f766e;
+  --warn: #b45309;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  line-height: 1.65;
+}
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+h1 {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+h2 {
+  margin: 28px 0 12px;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-size: 20px;
+}
+ul {
+  margin: 0 0 16px;
+  padding: 14px 18px 14px 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 880px;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: #eef2f7;
+  color: #334155;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+a {
+  color: #075985;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+strong {
+  color: var(--warn);
+}
+p {
+  margin: 0 0 12px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>長期現物・理想乖離＋配当品質スクリーナー</h1>
+<ul>
+<li>取得日時: 2026-08-02T18:29:24+09:00</li>
+<li>基準時点: 20260802-1818</li>
+<li>株価・財務種別: TradingViewスキャナー最新利用可能値</li>
+<li>対象銘柄数: 225</li>
+<li>注意: 財務値の会計期間はTradingView応答から特定できないためPERIOD_UNKNOWN。最終判断前に最新IR確認必須。</li>
+</ul>
+<h2>集計</h2>
+<p>最終確認候補: 21 / 財務・決算確認待ち: 10 / 買い禁止・財務不合格: 6 / 接近監視: 16 / 条件未到達: 172</p>
+<h2>要確認銘柄</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>判定</th>
+<th>一次トリガー</th>
+<th>現在利回り</th>
+<th>目標利回り</th>
+<th>理想乖離</th>
+<th>品質</th>
+</tr></thead><tbody>
+<tr>
+<td>9107 川崎汽船</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>4.21</td>
+<td>4.00</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>7202 いすゞ自動車</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>3.83</td>
+<td>3.50</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4503 アステラス製薬</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>3.54</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>8601 大和証券グループ本社</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>3.54</td>
+<td>3.50</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>9432 ＮＴＴ</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>3.48</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4043 トクヤマ</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>3.16</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4519 中外製薬</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>3.07</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4568 第一三共</td>
+<td>最終確認候補</td>
+<td>配当利回り到達</td>
+<td>3.04</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4061 デンカ</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>2.92</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>9502 中部電力</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>2.51</td>
+<td>3.50</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4063 信越化学工業</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>1.83</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>5802 住友電気工業</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>1.76</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>5333 ＮＧＫ</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>1.43</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>6479 ミネベアミツミ</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>1.35</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>7735 ＳＣＲＥＥＮホールディングス</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>1.16</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>8035 東京エレクトロン</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>1.13</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>2802 味の素</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>0.97</td>
+<td>3.00</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>5803 フジクラ</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>0.90</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>6981 村田製作所</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>0.88</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>6146 ディスコ</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>0.86</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>4062 イビデン</td>
+<td>最終確認候補</td>
+<td>理想乖離到達</td>
+<td>0.18</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>8252 丸井グループ</td>
+<td>財務・決算確認待ち</td>
+<td>配当利回り到達</td>
+<td>4.41</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>7270 ＳＵＢＡＲＵ</td>
+<td>財務・決算確認待ち</td>
+<td>配当利回り到達</td>
+<td>4.25</td>
+<td>3.50</td>
+<td>理想乖離未到達</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>9434 ソフトバンク</td>
+<td>財務・決算確認待ち</td>
+<td>配当利回り到達</td>
+<td>3.85</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>2914 ＪＴ</td>
+<td>財務・決算確認待ち</td>
+<td>配当利回り到達</td>
+<td>3.73</td>
+<td>3.00</td>
+<td>上方理想乖離超過(+3σ)</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>4523 エーザイ</td>
+<td>財務・決算確認待ち</td>
+<td>配当利回り到達</td>
+<td>3.31</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>2502 アサヒグループホールディングス</td>
+<td>財務・決算確認待ち</td>
+<td>配当利回り到達</td>
+<td>3.18</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>6526 ソシオネクスト</td>
+<td>財務・決算確認待ち</td>
+<td>理想乖離到達</td>
+<td>2.61</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>6506 安川電機</td>
+<td>財務・決算確認待ち</td>
+<td>理想乖離到達</td>
+<td>1.40</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>6976 太陽誘電</td>
+<td>財務・決算確認待ち</td>
+<td>理想乖離到達</td>
+<td>0.88</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>285A キオクシアホールディングス</td>
+<td>財務・決算確認待ち</td>
+<td>理想乖離到達</td>
+<td>0.00</td>
+<td>NOT_CONFIGURED</td>
+<td>深い理想乖離到達(-3σ)</td>
+<td>REVIEW</td>
+</tr>
+<tr>
+<td>7267 ホンダ</td>
+<td>買い禁止・財務不合格</td>
+<td>配当利回り到達</td>
+<td>4.31</td>
+<td>3.50</td>
+<td>理想乖離未到達</td>
+<td>REJECT</td>
+</tr>
+<tr>
+<td>4502 武田薬品工業</td>
+<td>買い禁止・財務不合格</td>
+<td>配当利回り到達</td>
+<td>3.63</td>
+<td>3.00</td>
+<td>理想乖離未到達</td>
+<td>REJECT</td>
+</tr>
+<tr>
+<td>7731 ニコン</td>
+<td>買い禁止・財務不合格</td>
+<td>理想乖離到達</td>
+<td>2.10</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>REJECT</td>
+</tr>
+<tr>
+<td>6963 ローム</td>
+<td>買い禁止・財務不合格</td>
+<td>理想乖離到達</td>
+<td>1.15</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>REJECT</td>
+</tr>
+<tr>
+<td>6723 ルネサスエレクトロニクス</td>
+<td>買い禁止・財務不合格</td>
+<td>理想乖離到達</td>
+<td>0.81</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>REJECT</td>
+</tr>
+<tr>
+<td>3436 ＳＵＭＣＯ</td>
+<td>買い禁止・財務不合格</td>
+<td>理想乖離到達</td>
+<td>0.60</td>
+<td>NOT_CONFIGURED</td>
+<td>理想乖離到達(-2σ)</td>
+<td>REJECT</td>
+</tr>
+<tr>
+<td>9101 日本郵船</td>
+<td>接近監視</td>
+<td>未到達</td>
+<td>3.76</td>
+<td>4.00</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>6902 デンソー</td>
+<td>接近監視</td>
+<td>未到達</td>
+<td>3.41</td>
+<td>3.50</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>8604 野村ホールディングス</td>
+<td>接近監視</td>
+<td>未到達</td>
+<td>3.36</td>
+<td>3.50</td>
+<td>理想乖離未到達</td>
+<td>PASS</td>
+</tr>
+</tbody></table></div>
+<h2>使い方</h2>
+<ul>
+<li>最終確認候補: 最新IRとチャートの下げ止まりを確認する。</li>
+<li>財務・決算確認待ち: 私への詳細確認対象。</li>
+<li>買い禁止・財務不合格: 赤字等に抵触。逆張りしない。</li>
+<li>接近監視: 到達前のアラート候補。</li>
+</ul>
+</main>
+</body>
+</html>
