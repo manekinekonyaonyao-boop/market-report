@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>長期現物スクリーナー 20260821-1645</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #64748b;
+  --line: #dbe1ea;
+  --accent: #0f766e;
+  --warn: #b45309;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  line-height: 1.65;
+}
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+h1 {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+h2 {
+  margin: 28px 0 12px;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-size: 20px;
+}
+ul {
+  margin: 0 0 16px;
+  padding: 14px 18px 14px 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 880px;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: #eef2f7;
+  color: #334155;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+a {
+  color: #075985;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+strong {
+  color: var(--warn);
+}
+p {
+  margin: 0 0 12px;
+}
+.spark{width:190px;height:54px;display:block;background:#f8fafc;border:1px solid #dbe1ea;border-radius:4px}.spark-link{display:block}.chart-missing{color:#64748b;font-size:12px}.chart-table td:last-child{padding:4px 8px}</style>
+</head>
+<body>
+<main>
+<h1>長期現物・理想乖離＋配当品質スクリーナー</h1>
+<ul>
+<li>取得日時: 2026-08-21T16:45:44+09:00</li>
+<li>基準時点: 20260821-1645</li>
+<li>株価・テクニカル・実績配当利回り: TradingViewスキャナー最新利用可能値</li>
+<li>予想配当利回り: TradingViewの配当利回り予測値（dividend_yield_recent）。正常取得時は予想利回り×終値から予想年間配当額を保存。取得不能時は7日以内の直近正常値を現在株価で再計算しSTALE表示。</li>
+<li>公式定義: https://jp.tradingview.com/support/solutions/43000723197/</li>
+<li>対象銘柄数: 225</li>
+<li>予想配当データ品質: OK 0 / NOT_FETCHED 8 / STALE 217 / CALC_ERROR 0</li>
+<li>品質点95以上: 68 / 225（旧基準の上限集中確認用）</li>
+<li>高配当到達判定は予想配当利回りだけを使用。実績配当利回りへの自動代替は行わない。</li>
+<li>注意: 財務値の会計期間はTradingView応答から特定できないためPERIOD_UNKNOWN。最終判断前に最新IR確認必須。</li>
+</ul>
+<ul>
+<li>A2は品質70点以上・時機45点以上・総合60点以上に加え、200MA下/M023下降/新規買い停止がない場合だけ表示。</li>
+<li>A1は最新ポートフォリオ連携が未完成のため判定保留。A1/A2も買い推奨ではなく、調査優先順位としてのみ使用する。</li>
+</ul>
+<ul>
+<li>チャート欄は過去の再集計時点の終値推移。銘柄名またはチャートをクリックすると自分のTradingViewチャートを開く。</li>
+</ul>
+<h2>集計</h2>
+<p>判定: 最終確認候補: 4 / 接近監視: 4 / 条件未到達: 217</p>
+<p>優先度: A1: 0 / A2: 0 / B: 8 / C: 0 / D: 217</p>
+<h2>A1/A2/Bのテーマ分布</h2>
+<p>other_225: 7 / defense_heavy_space: 1</p>
+<h2>要確認銘柄</h2>
+<div class="table-wrap chart-table"><table><thead><tr><th>銘柄</th><th>優先度</th><th>暫定点</th><th>品質点</th><th>時機点</th><th>判定</th><th>反転確認段階</th><th>一次トリガー</th><th>予想利回り</th><th>実績利回り</th><th>再集計時点の推移</th></tr></thead><tbody><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4704" target="_blank" rel="noopener">4704 トレンドマイクロ</a></td><td>B</td><td>68</td><td>100</td><td>30</td><td>最終確認候補</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>理想乖離到達</td><td>3.44 (STALE)</td><td>3.30</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4704" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 6,167.00 → 08/21 16:45 5,472.00"><title>07/13 11:04 6,167.00 → 08/21 16:45 5,472.00</title><polyline points="4.0,26.5 7.1,25.4 10.2,23.8 13.3,24.5 16.3,24.5 19.4,24.4 22.5,20.5 25.6,21.8 28.7,20.8 31.8,18.9 34.8,18.6 37.9,18.0 41.0,13.0 44.1,18.9 47.2,23.7 50.3,17.4 53.4,13.5 56.4,14.6 59.5,15.1 62.6,10.3 65.7,20.5 68.8,21.6 71.9,21.6 74.9,21.6 78.0,21.6 81.1,23.1 84.2,20.7 87.3,20.7 90.4,20.7 93.5,21.3 96.5,22.7 99.6,18.1 102.7,18.2 105.8,17.7 108.9,18.1 112.0,18.1 115.1,10.9 118.1,10.9 121.2,8.7 124.3,11.3 127.4,10.6 130.5,5.7 133.6,5.7 136.6,4.6 139.7,4.0 142.8,7.2 145.9,7.2 149.0,7.2 152.1,7.2 155.2,7.2 158.2,7.2 161.3,35.4 164.4,50.0 167.5,49.5 170.6,44.9 173.7,43.8 176.7,44.2 179.8,42.1 182.9,39.5 186.0,46.1" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7532" target="_blank" rel="noopener">7532 パン・パシフィック・インターナショナルホールディングス</a></td><td>B</td><td>65</td><td>100</td><td>22</td><td>最終確認候補</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>理想乖離到達</td><td>1.09 (STALE)</td><td>1.17</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7532" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 864.20 → 08/21 16:45 818.20"><title>07/13 11:04 864.20 → 08/21 16:45 818.20</title><polyline points="4.0,31.1 7.1,29.8 10.2,30.1 13.3,28.9 16.3,29.0 19.4,28.1 22.5,25.5 25.6,27.6 28.7,34.4 31.8,34.4 34.8,24.5 37.9,29.4 41.0,22.2 44.1,22.2 47.2,31.6 50.3,20.6 53.4,15.7 56.4,12.3 59.5,10.2 62.6,4.0 65.7,11.3 68.8,17.7 71.9,17.7 74.9,17.7 78.0,17.7 81.1,21.6 84.2,18.1 87.3,18.1 90.4,18.1 93.5,18.4 96.5,19.7 99.6,22.3 102.7,26.8 105.8,25.4 108.9,24.3 112.0,24.3 115.1,19.9 118.1,19.9 121.2,13.2 124.3,12.1 127.4,12.3 130.5,9.1 133.6,6.9 136.6,7.2 139.7,8.0 142.8,9.3 145.9,9.3 149.0,11.4 152.1,9.1 155.2,9.2 158.2,10.0 161.3,9.3 164.4,12.5 167.5,15.3 170.6,13.1 173.7,49.1 176.7,47.3 179.8,48.6 182.9,50.0 186.0,47.2" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4901" target="_blank" rel="noopener">4901 富士フイルムホールディングス</a></td><td>B</td><td>57</td><td>85</td><td>22</td><td>最終確認候補</td><td>反転確認待ち（200MA下・新規買い停止）</td><td>理想乖離到達</td><td>2.30 (STALE)</td><td>2.23</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4901" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 3,564.00 → 08/21 16:45 3,217.00"><title>07/13 11:04 3,564.00 → 08/21 16:45 3,217.00</title><polyline points="4.0,23.2 7.1,23.9 10.2,23.3 13.3,23.4 16.3,23.4 19.4,23.1 22.5,20.2 25.6,18.1 28.7,19.7 31.8,20.9 34.8,17.9 37.9,19.5 41.0,18.9 44.1,19.5 47.2,19.4 50.3,6.9 53.4,9.3 56.4,12.0 59.5,11.5 62.6,6.9 65.7,12.8 68.8,10.5 71.9,10.5 74.9,10.5 78.0,10.5 81.1,13.1 84.2,9.0 87.3,9.1 90.4,9.1 93.5,9.9 96.5,10.1 99.6,12.2 102.7,10.7 105.8,10.4 108.9,7.1 112.0,7.1 115.1,4.0 118.1,4.0 121.2,46.4 124.3,44.9 127.4,43.3 130.5,47.4 133.6,48.0 136.6,44.8 139.7,45.6 142.8,40.8 145.9,40.8 149.0,40.3 152.1,40.0 155.2,39.8 158.2,38.9 161.3,37.6 164.4,42.3 167.5,42.9 170.6,46.6 173.7,49.6 176.7,50.0 179.8,49.3 182.9,44.2 186.0,44.4" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6367" target="_blank" rel="noopener">6367 ダイキン工業</a></td><td>B</td><td>55</td><td>100</td><td>1</td><td>接近監視</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>未到達</td><td>1.71 (STALE)</td><td>1.64</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6367" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 25,095.00 → 08/21 16:45 20,700.00"><title>07/13 11:04 25,095.00 → 08/21 16:45 20,700.00</title><polyline points="4.0,4.0 7.1,4.2 10.2,4.8 13.3,5.5 16.3,5.5 19.4,5.1 22.5,4.9 25.6,6.0 28.7,8.6 31.8,4.5 34.8,5.6 37.9,6.4 41.0,7.3 44.1,8.6 47.2,16.7 50.3,14.0 53.4,16.6 56.4,19.0 59.5,18.1 62.6,19.2 65.7,20.1 68.8,22.8 71.9,22.8 74.9,22.8 78.0,22.8 81.1,23.9 84.2,22.2 87.3,21.9 90.4,22.0 93.5,22.1 96.5,22.8 99.6,17.9 102.7,35.3 105.8,37.4 108.9,33.6 112.0,33.6 115.1,35.3 118.1,35.3 121.2,35.2 124.3,34.6 127.4,34.2 130.5,34.9 133.6,34.8 136.6,37.4 139.7,40.9 142.8,43.0 145.9,43.0 149.0,42.4 152.1,43.0 155.2,42.8 158.2,43.4 161.3,44.2 164.4,43.5 167.5,42.2 170.6,45.7 173.7,49.8 176.7,49.8 179.8,49.9 182.9,48.3 186.0,50.0" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6479" target="_blank" rel="noopener">6479 ミネベアミツミ</a></td><td>B</td><td>55</td><td>100</td><td>1</td><td>接近監視</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>未到達</td><td>1.68 (STALE)</td><td>1.47</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6479" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 4,209.00 → 08/21 16:45 3,365.00"><title>07/13 11:04 4,209.00 → 08/21 16:45 3,365.00</title><polyline points="4.0,4.0 7.1,5.1 10.2,4.4 13.3,6.2 16.3,6.2 19.4,6.3 22.5,6.7 25.6,7.2 28.7,6.6 31.8,6.2 34.8,8.5 37.9,11.2 41.0,20.7 44.1,26.6 47.2,22.0 50.3,20.8 53.4,28.4 56.4,32.6 59.5,33.5 62.6,42.0 65.7,29.3 68.8,31.6 71.9,31.6 74.9,31.6 78.0,31.6 81.1,31.4 84.2,28.6 87.3,28.4 90.4,28.4 93.5,29.0 96.5,28.2 99.6,23.7 102.7,11.5 105.8,10.4 108.9,10.2 112.0,10.2 115.1,29.8 118.1,29.8 121.2,29.4 124.3,31.7 127.4,32.1 130.5,30.3 133.6,32.0 136.6,33.2 139.7,28.9 142.8,26.2 145.9,26.2 149.0,27.0 152.1,28.1 155.2,27.9 158.2,27.1 161.3,27.9 164.4,30.3 167.5,30.1 170.6,36.4 173.7,45.0 176.7,46.2 179.8,47.4 182.9,47.2 186.0,50.0" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1812" target="_blank" rel="noopener">1812 鹿島建設</a></td><td>B</td><td>54</td><td>85</td><td>17</td><td>最終確認候補</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>理想乖離到達</td><td>2.96 (STALE)</td><td>3.11</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1812" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 5,572.00 → 08/21 16:45 4,747.00"><title>07/13 11:04 5,572.00 → 08/21 16:45 4,747.00</title><polyline points="4.0,10.7 7.1,10.4 10.2,8.8 13.3,8.8 16.3,8.3 19.4,8.2 22.5,11.4 25.6,11.3 28.7,5.2 31.8,4.0 34.8,4.6 37.9,5.8 41.0,8.3 44.1,14.1 47.2,10.3 50.3,7.0 53.4,11.6 56.4,16.7 59.5,14.6 62.6,19.2 65.7,18.1 68.8,19.2 71.9,19.2 74.9,19.2 78.0,19.2 81.1,26.8 84.2,24.8 87.3,24.7 90.4,24.7 93.5,25.1 96.5,24.9 99.6,22.4 102.7,19.9 105.8,19.3 108.9,25.0 112.0,25.0 115.1,30.2 118.1,30.2 121.2,29.1 124.3,34.2 127.4,33.6 130.5,41.7 133.6,41.3 136.6,43.1 139.7,42.2 142.8,42.2 145.9,42.2 149.0,38.8 152.1,38.4 155.2,38.4 158.2,38.7 161.3,39.1 164.4,36.8 167.5,37.1 170.6,41.1 173.7,48.5 176.7,50.0 179.8,49.6 182.9,43.4 186.0,47.6" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6361" target="_blank" rel="noopener">6361 荏原</a></td><td>B</td><td>49</td><td>85</td><td>6</td><td>接近監視</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>未到達</td><td>1.26 (STALE)</td><td>1.28</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6361" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 5,991.00 → 08/21 16:45 4,921.00"><title>07/13 11:04 5,991.00 → 08/21 16:45 4,921.00</title><polyline points="4.0,12.4 7.1,12.9 10.2,14.1 13.3,15.9 16.3,16.7 19.4,15.3 22.5,20.9 25.6,16.3 28.7,4.0 31.8,4.0 34.8,16.4 37.9,18.1 41.0,26.0 44.1,34.3 47.2,23.3 50.3,24.7 53.4,38.6 56.4,43.0 59.5,41.9 62.6,48.9 65.7,31.1 68.8,27.6 71.9,27.6 74.9,27.6 78.0,27.6 81.1,31.1 84.2,28.1 87.3,27.5 90.4,27.5 93.5,27.9 96.5,27.7 99.6,19.6 102.7,12.8 105.8,14.3 108.9,11.4 112.0,11.4 115.1,17.3 118.1,17.3 121.2,23.7 124.3,22.4 127.4,23.1 130.5,25.6 133.6,27.1 136.6,23.3 139.7,21.8 142.8,15.4 145.9,15.4 149.0,13.9 152.1,14.5 155.2,15.1 158.2,16.9 161.3,17.0 164.4,36.2 167.5,30.3 170.6,35.5 173.7,45.3 176.7,47.7 179.8,47.3 182.9,46.3 186.0,50.0" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr><tr><td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6841" target="_blank" rel="noopener">6841 横河電機</a></td><td>B</td><td>49</td><td>85</td><td>6</td><td>接近監視</td><td>反転確認待ち（M023下降・200MA下・新規買い停止）</td><td>未到達</td><td>1.75 (STALE)</td><td>1.54</td><td><a class="spark-link" href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6841" target="_blank" rel="noopener"><svg class="spark" viewBox="0 0 190 54" role="img" aria-label="07/13 11:04 5,573.00 → 08/21 16:45 5,000.00"><title>07/13 11:04 5,573.00 → 08/21 16:45 5,000.00</title><polyline points="4.0,24.2 7.1,22.9 10.2,23.4 13.3,23.9 16.3,23.7 19.4,24.0 22.5,28.6 25.6,28.8 28.7,22.1 31.8,21.3 34.8,31.5 37.9,27.7 41.0,27.9 44.1,29.6 47.2,14.4 50.3,4.0 53.4,13.2 56.4,17.7 59.5,20.5 62.6,22.8 65.7,20.6 68.8,14.8 71.9,14.8 74.9,14.8 78.0,14.8 81.1,18.1 84.2,16.6 87.3,16.3 90.4,16.4 93.5,16.8 96.5,18.3 99.6,9.8 102.7,31.2 105.8,29.8 108.9,36.4 112.0,36.4 115.1,34.9 118.1,34.9 121.2,39.0 124.3,31.1 127.4,31.4 130.5,30.6 133.6,29.1 136.6,27.6 139.7,28.7 142.8,24.3 145.9,24.3 149.0,17.8 152.1,16.7 155.2,17.1 158.2,19.2 161.3,19.0 164.4,23.9 167.5,23.0 170.6,34.4 173.7,42.8 176.7,44.5 179.8,46.4 182.9,44.9 186.0,50.0" fill="none" stroke="#b91c1c" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg></a></td></tr></tbody></table></div>
+<h2>使い方</h2>
+<ul>
+<li>最終確認候補: 最新IRとチャートの下げ止まりを確認する。</li>
+<li>財務・決算確認待ち: 私への詳細確認対象。</li>
+<li>買い禁止・財務不合格: 赤字等に抵触。逆張りしない。</li>
+<li>接近監視: 到達前のアラート候補。</li>
+</ul>
+</main>
+</body>
+</html>

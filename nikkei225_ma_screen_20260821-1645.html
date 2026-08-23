@@ -1,0 +1,4110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日経225 統合MA反発・付近スクリーナー</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #64748b;
+  --line: #dbe1ea;
+  --accent: #0f766e;
+  --warn: #b45309;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  line-height: 1.65;
+}
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+h1 {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+h2 {
+  margin: 28px 0 12px;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-size: 20px;
+}
+ul {
+  margin: 0 0 16px;
+  padding: 14px 18px 14px 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 880px;
+  font-size: 14px;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+}
+th {
+  position: sticky;
+  top: 0;
+  background: #eef2f7;
+  color: #334155;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+a {
+  color: #075985;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+strong {
+  color: var(--warn);
+}
+p {
+  margin: 0 0 12px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>日経225 統合MA反発・付近スクリーナー</h1>
+<ul>
+<li>取得日時: 2026-08-21 16:45:44 +0900</li>
+<li>基準時点: 20260821-1645（入力: `panda_kairi_signals_20260821-1645.csv`）</li>
+<li>株価種別: TradingViewスキャナー現在値または直近終値</li>
+<li>対象銘柄数: 225</li>
+<li>対象移動平均: 5MA / 25MA / 75MA / 100MA / 200MA</li>
+<li>重要: MAタッチだけでは買いません。反発足、出来高、地合い、MA方向を確認します。</li>
+</ul>
+<h2>全体サマリー</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>MA</th>
+<th>用途</th>
+<th>当日再回復</th>
+<th>当日反発</th>
+<th>前日反発維持</th>
+<th>直上</th>
+<th>直下</th>
+<th>計算不足</th>
+</tr></thead><tbody>
+<tr>
+<td>200MA</td>
+<td>長期トレンドの分岐</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>100MA</td>
+<td>中長期の転換確認</td>
+<td>6</td>
+<td>15</td>
+<td>0</td>
+<td>2</td>
+<td>11</td>
+<td>1</td>
+</tr>
+<tr>
+<td>75MA</td>
+<td>中期トレンドの支持</td>
+<td>9</td>
+<td>11</td>
+<td>0</td>
+<td>4</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>25MA</td>
+<td>短期スイングの基準</td>
+<td>26</td>
+<td>22</td>
+<td>0</td>
+<td>5</td>
+<td>24</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5MA</td>
+<td>デイトレ・短期の勢い</td>
+<td>40</td>
+<td>19</td>
+<td>0</td>
+<td>7</td>
+<td>36</td>
+<td>0</td>
+</tr>
+</tbody></table></div>
+<h2>200MA: 長期トレンドの分岐</h2>
+<p>付近判定は±2.0%、タッチ許容はMAの上側1.0%です。</p>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>判定</th>
+<th>終値</th>
+<th>MA</th>
+<th>乖離率</th>
+<th>MA方向</th>
+<th>MA配列</th>
+<th>反発確認MA</th>
+<th>出来高比</th>
+<th>強さ</th>
+<th>注意点</th>
+<th>確認条件</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7211" target="_blank" rel="noopener">7211 三菱自動車</a></td>
+<td>A 当日再回復</td>
+<td>362.4</td>
+<td>360.7</td>
+<td>0.48%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 200MA</td>
+<td>1.10</td>
+<td>5</td>
+<td>特記事項なし</td>
+<td>反発安値351.7を維持し、当日高値362.4超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7269" target="_blank" rel="noopener">7269 スズキ</a></td>
+<td>A 当日再回復</td>
+<td>2,103.5</td>
+<td>2,086.8</td>
+<td>0.80%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>1.02</td>
+<td>5</td>
+<td>200MA下向き</td>
+<td>反発安値2,070.5を維持し、当日高値2,108.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9008" target="_blank" rel="noopener">9008 京王電鉄</a></td>
+<td>A 当日再回復</td>
+<td>785.4</td>
+<td>778.1</td>
+<td>0.93%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 200MA</td>
+<td>0.96</td>
+<td>5</td>
+<td>200MA下向き</td>
+<td>反発安値774.8を維持し、当日高値786.4超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1928" target="_blank" rel="noopener">1928 積水ハウス</a></td>
+<td>A 当日再回復</td>
+<td>3,471.0</td>
+<td>3,468.4</td>
+<td>0.07%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>100MA / 200MA</td>
+<td>1.11</td>
+<td>3</td>
+<td>特記事項なし</td>
+<td>反発安値3,437.0を維持し、当日高値3,475.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7731" target="_blank" rel="noopener">7731 ニコン</a></td>
+<td>A 当日再回復</td>
+<td>2,008.0</td>
+<td>1,939.3</td>
+<td>3.54%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>0.85</td>
+<td>2</td>
+<td>200MA下向き</td>
+<td>反発安値1,927.5を維持し、当日高値2,016.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1332" target="_blank" rel="noopener">1332 ニッスイ</a></td>
+<td>A 当日反発</td>
+<td>1,305.0</td>
+<td>1,278.6</td>
+<td>2.07%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>200MA下向き</td>
+<td>反発安値1,288.5を維持し、当日高値1,305.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5406" target="_blank" rel="noopener">5406 神戸製鋼所</a></td>
+<td>A 当日反発</td>
+<td>2,024.5</td>
+<td>2,007.0</td>
+<td>0.87%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>200MA下向き</td>
+<td>反発安値1,997.5を維持し、当日高値2,025.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2768" target="_blank" rel="noopener">2768 双日</a></td>
+<td>A 当日反発</td>
+<td>5,624.0</td>
+<td>5,495.2</td>
+<td>2.34%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA / 200MA</td>
+<td>0.86</td>
+<td>5</td>
+<td>200MA下向き</td>
+<td>反発安値5,494.0を維持し、当日高値5,628.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3861" target="_blank" rel="noopener">3861 王子ホールディングス</a></td>
+<td>A 当日反発</td>
+<td>866.7</td>
+<td>851.9</td>
+<td>1.74%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>0.66</td>
+<td>2</td>
+<td>200MA下向き</td>
+<td>反発安値860.2を維持し、当日高値873.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9602" target="_blank" rel="noopener">9602 東宝</a></td>
+<td>C MA直上</td>
+<td>1,543.5</td>
+<td>1,534.8</td>
+<td>0.57%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.80</td>
+<td>4</td>
+<td>200MA下向き</td>
+<td>200MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9202" target="_blank" rel="noopener">9202 ＡＮＡホールディングス</a></td>
+<td>C MA直上</td>
+<td>3,040.0</td>
+<td>2,985.1</td>
+<td>1.84%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.89</td>
+<td>1</td>
+<td>200MA下向き</td>
+<td>200MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8252" target="_blank" rel="noopener">8252 丸井グループ</a></td>
+<td>D MA直下</td>
+<td>2,989.5</td>
+<td>3,018.7</td>
+<td>-0.97%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.66</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2282" target="_blank" rel="noopener">2282 日本ハム</a></td>
+<td>D MA直下</td>
+<td>6,423.0</td>
+<td>6,548.4</td>
+<td>-1.91%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 100MA</td>
+<td>1.34</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9021" target="_blank" rel="noopener">9021 西日本旅客鉄道</a></td>
+<td>D MA直下</td>
+<td>2,959.5</td>
+<td>3,016.2</td>
+<td>-1.88%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>25MA</td>
+<td>0.80</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1808" target="_blank" rel="noopener">1808 長谷工コーポレーション</a></td>
+<td>D MA直下</td>
+<td>2,856.5</td>
+<td>2,913.5</td>
+<td>-1.96%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>1.38</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9064" target="_blank" rel="noopener">9064 ヤマトホールディングス</a></td>
+<td>D MA直下</td>
+<td>1,931.5</td>
+<td>1,960.0</td>
+<td>-1.45%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.62</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7203" target="_blank" rel="noopener">7203 トヨタ自動車</a></td>
+<td>D MA直下</td>
+<td>3,132.0</td>
+<td>3,191.2</td>
+<td>-1.86%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.09</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5411" target="_blank" rel="noopener">5411 ＪＦＥホールディングス</a></td>
+<td>D MA直下</td>
+<td>1,845.5</td>
+<td>1,854.4</td>
+<td>-0.48%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.89</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6988" target="_blank" rel="noopener">6988 日東電工</a></td>
+<td>D MA直下</td>
+<td>3,414.0</td>
+<td>3,419.4</td>
+<td>-0.16%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.81</td>
+<td>1</td>
+<td>200MA下向き / 回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6471" target="_blank" rel="noopener">6471 日本精工</a></td>
+<td>D MA直下</td>
+<td>1,117.5</td>
+<td>1,119.3</td>
+<td>-0.16%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.89</td>
+<td>1</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4307" target="_blank" rel="noopener">4307 野村総合研究所</a></td>
+<td>D MA直下</td>
+<td>5,012.0</td>
+<td>5,052.1</td>
+<td>-0.79%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.77</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6701" target="_blank" rel="noopener">6701 ＮＥＣ</a></td>
+<td>D MA直下</td>
+<td>4,656.0</td>
+<td>4,702.9</td>
+<td>-1.00%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.95</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6702" target="_blank" rel="noopener">6702 富士通</a></td>
+<td>D MA直下</td>
+<td>3,646.0</td>
+<td>3,713.4</td>
+<td>-1.82%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.62</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6472" target="_blank" rel="noopener">6472 ＮＴＮ</a></td>
+<td>D MA直下</td>
+<td>374.0</td>
+<td>381.1</td>
+<td>-1.87%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.59</td>
+<td>1</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4063" target="_blank" rel="noopener">4063 信越化学工業</a></td>
+<td>D MA直下</td>
+<td>6,051.0</td>
+<td>6,066.7</td>
+<td>-0.26%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.89</td>
+<td>0</td>
+<td>200MA下向き / 既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1963" target="_blank" rel="noopener">1963 日揮ホールディングス</a></td>
+<td>D MA直下</td>
+<td>2,233.0</td>
+<td>2,243.5</td>
+<td>-0.47%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.37</td>
+<td>0</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4061" target="_blank" rel="noopener">4061 デンカ</a></td>
+<td>D MA直下</td>
+<td>3,380.0</td>
+<td>3,396.5</td>
+<td>-0.49%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.61</td>
+<td>0</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で200MAを回復するまで待つ</td>
+</tr>
+</tbody></table></div>
+<h2>100MA: 中長期の転換確認</h2>
+<p>付近判定は±2.0%、タッチ許容はMAの上側1.0%です。</p>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>判定</th>
+<th>終値</th>
+<th>MA</th>
+<th>乖離率</th>
+<th>MA方向</th>
+<th>MA配列</th>
+<th>反発確認MA</th>
+<th>出来高比</th>
+<th>強さ</th>
+<th>注意点</th>
+<th>確認条件</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2768" target="_blank" rel="noopener">2768 双日</a></td>
+<td>A 当日再回復</td>
+<td>5,624.0</td>
+<td>5,586.8</td>
+<td>0.67%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA / 200MA</td>
+<td>0.86</td>
+<td>5</td>
+<td>100MA下向き</td>
+<td>反発安値5,494.0を維持し、当日高値5,628.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4005" target="_blank" rel="noopener">4005 住友化学</a></td>
+<td>A 当日再回復</td>
+<td>559.8</td>
+<td>540.5</td>
+<td>3.56%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA</td>
+<td>2.21</td>
+<td>5</td>
+<td>100MA下向き</td>
+<td>反発安値525.0を維持し、当日高値560.8超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5020" target="_blank" rel="noopener">5020 ＥＮＥＯＳホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>1,331.0</td>
+<td>1,307.8</td>
+<td>1.78%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 100MA</td>
+<td>1.03</td>
+<td>7</td>
+<td>100MA下向き</td>
+<td>反発安値1,299.5を維持し、当日高値1,332.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5019" target="_blank" rel="noopener">5019 出光興産</a></td>
+<td>A 当日再回復</td>
+<td>1,383.5</td>
+<td>1,351.7</td>
+<td>2.35%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA</td>
+<td>1.07</td>
+<td>5</td>
+<td>100MA下向き</td>
+<td>反発安値1,340.0を維持し、当日高値1,383.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5803" target="_blank" rel="noopener">5803 フジクラ</a></td>
+<td>A 当日再回復</td>
+<td>5,280.0</td>
+<td>5,229.5</td>
+<td>0.97%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA / 100MA</td>
+<td>0.81</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値5,144.0を維持し、当日高値5,422.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6273" target="_blank" rel="noopener">6273 ＳＭＣ</a></td>
+<td>A 当日再回復</td>
+<td>71,090.0</td>
+<td>70,638.9</td>
+<td>0.64%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>100MA</td>
+<td>0.70</td>
+<td>4</td>
+<td>100MA下向き</td>
+<td>反発安値69,500.0を維持し、当日高値71,540.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6770" target="_blank" rel="noopener">6770 アルプスアルパイン</a></td>
+<td>A 当日反発</td>
+<td>2,193.5</td>
+<td>2,158.3</td>
+<td>1.63%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA / 100MA</td>
+<td>1.06</td>
+<td>6</td>
+<td>100MA下向き</td>
+<td>反発安値2,149.0を維持し、当日高値2,197.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1332" target="_blank" rel="noopener">1332 ニッスイ</a></td>
+<td>A 当日反発</td>
+<td>1,305.0</td>
+<td>1,286.0</td>
+<td>1.47%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>100MA下向き</td>
+<td>反発安値1,288.5を維持し、当日高値1,305.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2002" target="_blank" rel="noopener">2002 日清製粉グループ本社</a></td>
+<td>A 当日反発</td>
+<td>2,068.0</td>
+<td>2,012.7</td>
+<td>2.75%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 100MA</td>
+<td>1.38</td>
+<td>7</td>
+<td>100MA下向き</td>
+<td>反発安値2,021.0を維持し、当日高値2,068.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9502" target="_blank" rel="noopener">9502 中部電力</a></td>
+<td>A 当日反発</td>
+<td>2,906.5</td>
+<td>2,833.8</td>
+<td>2.56%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA</td>
+<td>1.32</td>
+<td>5</td>
+<td>100MA下向き</td>
+<td>反発安値2,860.5を維持し、当日高値2,921.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4755" target="_blank" rel="noopener">4755 楽天グループ</a></td>
+<td>A 当日反発</td>
+<td>780.8</td>
+<td>773.6</td>
+<td>0.93%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 75MA / 100MA</td>
+<td>0.56</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値769.5を維持し、当日高値781.1超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4183" target="_blank" rel="noopener">4183 三井化学</a></td>
+<td>A 当日反発</td>
+<td>2,143.0</td>
+<td>2,078.4</td>
+<td>3.11%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA / 100MA</td>
+<td>0.90</td>
+<td>4</td>
+<td>100MA下向き</td>
+<td>反発安値2,087.0を維持し、当日高値2,149.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9735" target="_blank" rel="noopener">9735 セコム</a></td>
+<td>A 当日反発</td>
+<td>6,413.0</td>
+<td>6,349.5</td>
+<td>1.00%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA</td>
+<td>0.57</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値6,357.0を維持し、当日高値6,426.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1928" target="_blank" rel="noopener">1928 積水ハウス</a></td>
+<td>A 当日反発</td>
+<td>3,471.0</td>
+<td>3,428.3</td>
+<td>1.24%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>100MA / 200MA</td>
+<td>1.11</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値3,437.0を維持し、当日高値3,475.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2282" target="_blank" rel="noopener">2282 日本ハム</a></td>
+<td>A 当日反発</td>
+<td>6,423.0</td>
+<td>6,342.2</td>
+<td>1.27%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 100MA</td>
+<td>1.34</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値6,385.0を維持し、当日高値6,508.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6902" target="_blank" rel="noopener">6902 デンソー</a></td>
+<td>A 当日反発</td>
+<td>1,948.5</td>
+<td>1,921.7</td>
+<td>1.40%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>75MA / 100MA</td>
+<td>0.70</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値1,939.0を維持し、当日高値1,954.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3289" target="_blank" rel="noopener">3289 東急不動産ホールディングス</a></td>
+<td>A 当日反発</td>
+<td>1,347.5</td>
+<td>1,327.7</td>
+<td>1.49%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA / 100MA</td>
+<td>1.12</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値1,334.0を維持し、当日高値1,349.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1925" target="_blank" rel="noopener">1925 大和ハウス工業</a></td>
+<td>A 当日反発</td>
+<td>4,689.0</td>
+<td>4,606.6</td>
+<td>1.79%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA / 100MA</td>
+<td>1.10</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>反発安値4,649.0を維持し、当日高値4,701.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6504" target="_blank" rel="noopener">6504 富士電機</a></td>
+<td>A 当日反発</td>
+<td>13,885.0</td>
+<td>13,548.9</td>
+<td>2.48%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 100MA</td>
+<td>1.12</td>
+<td>2</td>
+<td>100MA下向き</td>
+<td>反発安値13,440.0を維持し、当日高値14,050.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6963" target="_blank" rel="noopener">6963 ローム</a></td>
+<td>A 当日反発</td>
+<td>4,699.0</td>
+<td>4,558.7</td>
+<td>3.08%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 100MA</td>
+<td>0.67</td>
+<td>1</td>
+<td>100MA下向き</td>
+<td>反発安値4,596.0を維持し、当日高値4,732.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4004" target="_blank" rel="noopener">4004 レゾナック・ホールディングス</a></td>
+<td>A 当日反発</td>
+<td>16,060.0</td>
+<td>15,635.6</td>
+<td>2.71%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>100MA</td>
+<td>0.55</td>
+<td>2</td>
+<td>100MA下向き</td>
+<td>反発安値15,775.0を維持し、当日高値16,255.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9020" target="_blank" rel="noopener">9020 東日本旅客鉄道</a></td>
+<td>C MA直上</td>
+<td>3,539.0</td>
+<td>3,526.4</td>
+<td>0.36%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.22</td>
+<td>3</td>
+<td>100MA下向き</td>
+<td>100MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3382" target="_blank" rel="noopener">3382 セブン＆アイ・ホールディングス</a></td>
+<td>C MA直上</td>
+<td>2,030.5</td>
+<td>1,993.2</td>
+<td>1.87%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.18</td>
+<td>1</td>
+<td>100MA下向き</td>
+<td>100MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9501" target="_blank" rel="noopener">9501 東京電力ホールディングス</a></td>
+<td>D MA直下</td>
+<td>549.3</td>
+<td>551.4</td>
+<td>-0.39%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 75MA</td>
+<td>1.50</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8804" target="_blank" rel="noopener">8804 東京建物</a></td>
+<td>D MA直下</td>
+<td>3,411.0</td>
+<td>3,416.5</td>
+<td>-0.16%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.88</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7731" target="_blank" rel="noopener">7731 ニコン</a></td>
+<td>D MA直下</td>
+<td>2,008.0</td>
+<td>2,019.0</td>
+<td>-0.55%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>0.85</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7201" target="_blank" rel="noopener">7201 日産自動車</a></td>
+<td>D MA直下</td>
+<td>336.0</td>
+<td>342.2</td>
+<td>-1.82%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.71</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8766" target="_blank" rel="noopener">8766 東京海上ホールディングス</a></td>
+<td>D MA直下</td>
+<td>7,347.0</td>
+<td>7,420.1</td>
+<td>-0.98%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.94</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6326" target="_blank" rel="noopener">6326 クボタ</a></td>
+<td>D MA直下</td>
+<td>2,712.0</td>
+<td>2,719.7</td>
+<td>-0.28%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>1.08</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7202" target="_blank" rel="noopener">7202 いすゞ自動車</a></td>
+<td>D MA直下</td>
+<td>2,228.5</td>
+<td>2,270.6</td>
+<td>-1.85%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.86</td>
+<td>0</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3099" target="_blank" rel="noopener">3099 三越伊勢丹ホールディングス</a></td>
+<td>D MA直下</td>
+<td>3,473.0</td>
+<td>3,479.3</td>
+<td>-0.18%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.49</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7735" target="_blank" rel="noopener">7735 ＳＣＲＥＥＮホールディングス</a></td>
+<td>D MA直下</td>
+<td>12,970.0</td>
+<td>13,199.5</td>
+<td>-1.74%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.64</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4042" target="_blank" rel="noopener">4042 東ソー</a></td>
+<td>D MA直下</td>
+<td>2,656.0</td>
+<td>2,666.9</td>
+<td>-0.41%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.81</td>
+<td>0</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3436" target="_blank" rel="noopener">3436 ＳＵＭＣＯ</a></td>
+<td>D MA直下</td>
+<td>3,384.0</td>
+<td>3,399.3</td>
+<td>-0.45%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.71</td>
+<td>0</td>
+<td>回復確認前</td>
+<td>終値で100MAを回復するまで待つ</td>
+</tr>
+</tbody></table></div>
+<h2>75MA: 中期トレンドの支持</h2>
+<p>付近判定は±2.0%、タッチ許容はMAの上側1.0%です。</p>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>判定</th>
+<th>終値</th>
+<th>MA</th>
+<th>乖離率</th>
+<th>MA方向</th>
+<th>MA配列</th>
+<th>反発確認MA</th>
+<th>出来高比</th>
+<th>強さ</th>
+<th>注意点</th>
+<th>確認条件</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5233" target="_blank" rel="noopener">5233 太平洋セメント</a></td>
+<td>A 当日再回復</td>
+<td>4,187.0</td>
+<td>4,120.7</td>
+<td>1.61%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA</td>
+<td>0.52</td>
+<td>6</td>
+<td>75MA下向き</td>
+<td>反発安値4,100.0を維持し、当日高値4,198.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9502" target="_blank" rel="noopener">9502 中部電力</a></td>
+<td>A 当日再回復</td>
+<td>2,906.5</td>
+<td>2,873.4</td>
+<td>1.15%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA</td>
+<td>1.32</td>
+<td>5</td>
+<td>75MA下向き</td>
+<td>反発安値2,860.5を維持し、当日高値2,921.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4005" target="_blank" rel="noopener">4005 住友化学</a></td>
+<td>A 当日再回復</td>
+<td>559.8</td>
+<td>546.8</td>
+<td>2.37%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA</td>
+<td>2.21</td>
+<td>5</td>
+<td>75MA下向き</td>
+<td>反発安値525.0を維持し、当日高値560.8超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4183" target="_blank" rel="noopener">4183 三井化学</a></td>
+<td>A 当日再回復</td>
+<td>2,143.0</td>
+<td>2,124.4</td>
+<td>0.87%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA / 100MA</td>
+<td>0.90</td>
+<td>4</td>
+<td>75MA下向き</td>
+<td>反発安値2,087.0を維持し、当日高値2,149.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9501" target="_blank" rel="noopener">9501 東京電力ホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>549.3</td>
+<td>526.1</td>
+<td>4.42%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 75MA</td>
+<td>1.50</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値518.8を維持し、当日高値549.3超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2802" target="_blank" rel="noopener">2802 味の素</a></td>
+<td>A 当日再回復</td>
+<td>5,396.0</td>
+<td>5,367.4</td>
+<td>0.53%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.71</td>
+<td>4</td>
+<td>75MA下向き</td>
+<td>反発安値5,260.0を維持し、当日高値5,441.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6473" target="_blank" rel="noopener">6473 ジェイテクト</a></td>
+<td>A 当日再回復</td>
+<td>2,077.5</td>
+<td>2,063.0</td>
+<td>0.70%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.75</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値2,055.0を維持し、当日高値2,083.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8750" target="_blank" rel="noopener">8750 第一ライフグループ</a></td>
+<td>A 当日再回復</td>
+<td>1,788.5</td>
+<td>1,764.7</td>
+<td>1.35%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.64</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値1,753.0を維持し、当日高値1,801.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6971" target="_blank" rel="noopener">6971 京セラ</a></td>
+<td>A 当日再回復</td>
+<td>3,608.0</td>
+<td>3,535.5</td>
+<td>2.05%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>1.08</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値3,490.0を維持し、当日高値3,608.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6770" target="_blank" rel="noopener">6770 アルプスアルパイン</a></td>
+<td>A 当日反発</td>
+<td>2,193.5</td>
+<td>2,135.2</td>
+<td>2.73%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA / 100MA</td>
+<td>1.06</td>
+<td>6</td>
+<td>75MA下向き</td>
+<td>反発安値2,149.0を維持し、当日高値2,197.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1332" target="_blank" rel="noopener">1332 ニッスイ</a></td>
+<td>A 当日反発</td>
+<td>1,305.0</td>
+<td>1,277.2</td>
+<td>2.18%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>75MA下向き</td>
+<td>反発安値1,288.5を維持し、当日高値1,305.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4755" target="_blank" rel="noopener">4755 楽天グループ</a></td>
+<td>A 当日反発</td>
+<td>780.8</td>
+<td>773.4</td>
+<td>0.96%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 75MA / 100MA</td>
+<td>0.56</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値769.5を維持し、当日高値781.1超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6861" target="_blank" rel="noopener">6861 キーエンス</a></td>
+<td>A 当日反発</td>
+<td>79,900.0</td>
+<td>78,260.4</td>
+<td>2.10%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 75MA</td>
+<td>0.62</td>
+<td>5</td>
+<td>75MA下向き</td>
+<td>反発安値78,690.0を維持し、当日高値80,470.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8053" target="_blank" rel="noopener">8053 住友商事</a></td>
+<td>A 当日反発</td>
+<td>1,709.0</td>
+<td>1,677.5</td>
+<td>1.88%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 75MA</td>
+<td>0.82</td>
+<td>4</td>
+<td>75MA下向き</td>
+<td>反発安値1,688.0を維持し、当日高値1,724.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9532" target="_blank" rel="noopener">9532 大阪ガス</a></td>
+<td>A 当日反発</td>
+<td>5,551.0</td>
+<td>5,493.6</td>
+<td>1.04%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA / 75MA</td>
+<td>1.13</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値5,501.0を維持し、当日高値5,574.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6902" target="_blank" rel="noopener">6902 デンソー</a></td>
+<td>A 当日反発</td>
+<td>1,948.5</td>
+<td>1,922.7</td>
+<td>1.34%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>75MA / 100MA</td>
+<td>0.70</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値1,939.0を維持し、当日高値1,954.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5803" target="_blank" rel="noopener">5803 フジクラ</a></td>
+<td>A 当日反発</td>
+<td>5,280.0</td>
+<td>5,188.3</td>
+<td>1.77%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA / 100MA</td>
+<td>0.81</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値5,144.0を維持し、当日高値5,422.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4188" target="_blank" rel="noopener">4188 三菱ケミカルグループ</a></td>
+<td>A 当日反発</td>
+<td>1,147.5</td>
+<td>1,117.9</td>
+<td>2.65%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.80</td>
+<td>4</td>
+<td>75MA下向き</td>
+<td>反発安値1,128.0を維持し、当日高値1,153.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8316" target="_blank" rel="noopener">8316 三井住友フィナンシャルグループ</a></td>
+<td>A 当日反発</td>
+<td>6,606.0</td>
+<td>6,451.0</td>
+<td>2.40%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.71</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値6,493.0を維持し、当日高値6,629.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8795" target="_blank" rel="noopener">8795 Ｔ＆Ｄホールディングス</a></td>
+<td>A 当日反発</td>
+<td>4,795.0</td>
+<td>4,656.1</td>
+<td>2.98%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>1.03</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>反発安値4,679.0を維持し、当日高値4,824.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5301" target="_blank" rel="noopener">5301 東海カーボン</a></td>
+<td>C MA直上</td>
+<td>1,685.0</td>
+<td>1,674.3</td>
+<td>0.64%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.59</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>75MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9020" target="_blank" rel="noopener">9020 東日本旅客鉄道</a></td>
+<td>C MA直上</td>
+<td>3,539.0</td>
+<td>3,514.8</td>
+<td>0.69%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.22</td>
+<td>3</td>
+<td>75MA下向き</td>
+<td>75MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4507" target="_blank" rel="noopener">4507 塩野義製薬</a></td>
+<td>C MA直上</td>
+<td>2,919.0</td>
+<td>2,888.8</td>
+<td>1.05%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.85</td>
+<td>2</td>
+<td>75MA下向き</td>
+<td>75MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7011" target="_blank" rel="noopener">7011 三菱重工業</a></td>
+<td>C MA直上</td>
+<td>3,932.0</td>
+<td>3,903.8</td>
+<td>0.72%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.96</td>
+<td>1</td>
+<td>75MA下向き</td>
+<td>75MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9735" target="_blank" rel="noopener">9735 セコム</a></td>
+<td>D MA直下</td>
+<td>6,413.0</td>
+<td>6,477.7</td>
+<td>-1.00%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA</td>
+<td>0.57</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8031" target="_blank" rel="noopener">8031 三井物産</a></td>
+<td>D MA直下</td>
+<td>4,899.0</td>
+<td>4,990.5</td>
+<td>-1.83%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.91</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7201" target="_blank" rel="noopener">7201 日産自動車</a></td>
+<td>D MA直下</td>
+<td>336.0</td>
+<td>337.9</td>
+<td>-0.55%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.71</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8058" target="_blank" rel="noopener">8058 三菱商事</a></td>
+<td>D MA直下</td>
+<td>4,794.0</td>
+<td>4,834.0</td>
+<td>-0.83%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.95</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8267" target="_blank" rel="noopener">8267 イオン</a></td>
+<td>D MA直下</td>
+<td>1,385.5</td>
+<td>1,393.6</td>
+<td>-0.58%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.89</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6273" target="_blank" rel="noopener">6273 ＳＭＣ</a></td>
+<td>D MA直下</td>
+<td>71,090.0</td>
+<td>71,318.4</td>
+<td>-0.32%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>100MA</td>
+<td>0.70</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6326" target="_blank" rel="noopener">6326 クボタ</a></td>
+<td>D MA直下</td>
+<td>2,712.0</td>
+<td>2,763.4</td>
+<td>-1.86%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>1.08</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7202" target="_blank" rel="noopener">7202 いすゞ自動車</a></td>
+<td>D MA直下</td>
+<td>2,228.5</td>
+<td>2,261.7</td>
+<td>-1.47%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.86</td>
+<td>0</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9005" target="_blank" rel="noopener">9005 東急</a></td>
+<td>D MA直下</td>
+<td>1,676.5</td>
+<td>1,680.8</td>
+<td>-0.25%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.73</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8801" target="_blank" rel="noopener">8801 三井不動産</a></td>
+<td>D MA直下</td>
+<td>1,498.0</td>
+<td>1,525.7</td>
+<td>-1.82%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.75</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8591" target="_blank" rel="noopener">8591 オリックス</a></td>
+<td>D MA直下</td>
+<td>6,115.0</td>
+<td>6,236.9</td>
+<td>-1.95%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.67</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で75MAを回復するまで待つ</td>
+</tr>
+</tbody></table></div>
+<h2>25MA: 短期スイングの基準</h2>
+<p>付近判定は±1.5%、タッチ許容はMAの上側0.8%です。</p>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>判定</th>
+<th>終値</th>
+<th>MA</th>
+<th>乖離率</th>
+<th>MA方向</th>
+<th>MA配列</th>
+<th>反発確認MA</th>
+<th>出来高比</th>
+<th>強さ</th>
+<th>注意点</th>
+<th>確認条件</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5233" target="_blank" rel="noopener">5233 太平洋セメント</a></td>
+<td>A 当日再回復</td>
+<td>4,187.0</td>
+<td>4,144.5</td>
+<td>1.03%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA</td>
+<td>0.52</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値4,100.0を維持し、当日高値4,198.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5406" target="_blank" rel="noopener">5406 神戸製鋼所</a></td>
+<td>A 当日再回復</td>
+<td>2,024.5</td>
+<td>2,011.6</td>
+<td>0.64%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>反発安値1,997.5を維持し、当日高値2,025.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9001" target="_blank" rel="noopener">9001 東武鉄道</a></td>
+<td>A 当日再回復</td>
+<td>3,014.0</td>
+<td>3,009.6</td>
+<td>0.15%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>1.41</td>
+<td>7</td>
+<td>特記事項なし</td>
+<td>反発安値2,978.0を維持し、当日高値3,014.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9433" target="_blank" rel="noopener">9433 ＫＤＤＩ</a></td>
+<td>A 当日再回復</td>
+<td>2,915.5</td>
+<td>2,899.1</td>
+<td>0.56%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>1.37</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値2,860.0を維持し、当日高値2,930.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8725" target="_blank" rel="noopener">8725 ＭＳ＆ＡＤインシュアランスグループホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>4,945.0</td>
+<td>4,850.0</td>
+<td>1.96%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.87</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値4,766.0を維持し、当日高値4,957.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8697" target="_blank" rel="noopener">8697 日本取引所グループ</a></td>
+<td>A 当日再回復</td>
+<td>2,238.0</td>
+<td>2,233.6</td>
+<td>0.20%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.79</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値2,199.5を維持し、当日高値2,246.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6724" target="_blank" rel="noopener">6724 セイコーエプソン</a></td>
+<td>A 当日再回復</td>
+<td>3,063.0</td>
+<td>3,024.3</td>
+<td>1.28%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.66</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値3,019.0を維持し、当日高値3,063.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8309" target="_blank" rel="noopener">8309 三井住友トラストグループ</a></td>
+<td>A 当日再回復</td>
+<td>1,715.5</td>
+<td>1,690.2</td>
+<td>1.50%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.61</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値1,684.5を維持し、当日高値1,715.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7951" target="_blank" rel="noopener">7951 ヤマハ</a></td>
+<td>A 当日再回復</td>
+<td>1,309.0</td>
+<td>1,287.5</td>
+<td>1.67%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.64</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値1,285.0を維持し、当日高値1,314.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6861" target="_blank" rel="noopener">6861 キーエンス</a></td>
+<td>A 当日再回復</td>
+<td>79,900.0</td>
+<td>79,802.0</td>
+<td>0.12%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 75MA</td>
+<td>0.62</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>反発安値78,690.0を維持し、当日高値80,470.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9008" target="_blank" rel="noopener">9008 京王電鉄</a></td>
+<td>A 当日再回復</td>
+<td>785.4</td>
+<td>781.8</td>
+<td>0.46%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 200MA</td>
+<td>0.96</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>反発安値774.8を維持し、当日高値786.4超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7211" target="_blank" rel="noopener">7211 三菱自動車</a></td>
+<td>A 当日再回復</td>
+<td>362.4</td>
+<td>360.7</td>
+<td>0.48%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 200MA</td>
+<td>1.10</td>
+<td>5</td>
+<td>特記事項なし</td>
+<td>反発安値351.7を維持し、当日高値362.4超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4902" target="_blank" rel="noopener">4902 コニカミノルタ</a></td>
+<td>A 当日再回復</td>
+<td>648.3</td>
+<td>642.9</td>
+<td>0.84%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.52</td>
+<td>4</td>
+<td>25MA下向き</td>
+<td>反発安値635.8を維持し、当日高値648.3超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8031" target="_blank" rel="noopener">8031 三井物産</a></td>
+<td>A 当日再回復</td>
+<td>4,899.0</td>
+<td>4,856.6</td>
+<td>0.87%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.91</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>反発安値4,769.0を維持し、当日高値4,899.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8804" target="_blank" rel="noopener">8804 東京建物</a></td>
+<td>A 当日再回復</td>
+<td>3,411.0</td>
+<td>3,399.1</td>
+<td>0.35%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.88</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値3,369.0を維持し、当日高値3,417.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7201" target="_blank" rel="noopener">7201 日産自動車</a></td>
+<td>A 当日再回復</td>
+<td>336.0</td>
+<td>334.1</td>
+<td>0.58%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.71</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値330.5を維持し、当日高値338.6超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8058" target="_blank" rel="noopener">8058 三菱商事</a></td>
+<td>A 当日再回復</td>
+<td>4,794.0</td>
+<td>4,762.8</td>
+<td>0.65%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.95</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値4,693.0を維持し、当日高値4,794.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6504" target="_blank" rel="noopener">6504 富士電機</a></td>
+<td>A 当日再回復</td>
+<td>13,885.0</td>
+<td>13,697.2</td>
+<td>1.37%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 100MA</td>
+<td>1.12</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値13,440.0を維持し、当日高値14,050.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8267" target="_blank" rel="noopener">8267 イオン</a></td>
+<td>A 当日再回復</td>
+<td>1,385.5</td>
+<td>1,374.0</td>
+<td>0.84%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.89</td>
+<td>1</td>
+<td>25MA下向き</td>
+<td>反発安値1,370.0を維持し、当日高値1,387.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3086" target="_blank" rel="noopener">3086 Ｊ．フロント リテイリング</a></td>
+<td>A 当日再回復</td>
+<td>3,023.0</td>
+<td>3,004.5</td>
+<td>0.62%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>1.38</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値2,970.0を維持し、当日高値3,035.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7186" target="_blank" rel="noopener">7186 横浜フィナンシャルグループ</a></td>
+<td>A 当日再回復</td>
+<td>1,882.5</td>
+<td>1,881.0</td>
+<td>0.08%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>1.12</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値1,838.5を維持し、当日高値1,899.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8354" target="_blank" rel="noopener">8354 ふくおかフィナンシャルグループ</a></td>
+<td>A 当日再回復</td>
+<td>7,564.0</td>
+<td>7,522.6</td>
+<td>0.55%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.45</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値7,430.0を維持し、当日高値7,593.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8331" target="_blank" rel="noopener">8331 千葉銀行</a></td>
+<td>A 当日再回復</td>
+<td>2,753.5</td>
+<td>2,707.7</td>
+<td>1.69%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.73</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値2,692.0を維持し、当日高値2,777.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9007" target="_blank" rel="noopener">9007 小田急電鉄</a></td>
+<td>A 当日再回復</td>
+<td>1,775.0</td>
+<td>1,732.8</td>
+<td>2.44%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>1.20</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>反発安値1,730.0を維持し、当日高値1,775.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9021" target="_blank" rel="noopener">9021 西日本旅客鉄道</a></td>
+<td>A 当日再回復</td>
+<td>2,959.5</td>
+<td>2,958.2</td>
+<td>0.04%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>25MA</td>
+<td>0.80</td>
+<td>3</td>
+<td>特記事項なし</td>
+<td>反発安値2,917.0を維持し、当日高値2,966.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A285A" target="_blank" rel="noopener">285A キオクシアホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>54,320.0</td>
+<td>52,502.8</td>
+<td>3.46%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.90</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値51,910.0を維持し、当日高値55,470.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6770" target="_blank" rel="noopener">6770 アルプスアルパイン</a></td>
+<td>A 当日反発</td>
+<td>2,193.5</td>
+<td>2,160.1</td>
+<td>1.54%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA / 100MA</td>
+<td>1.06</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値2,149.0を維持し、当日高値2,197.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2002" target="_blank" rel="noopener">2002 日清製粉グループ本社</a></td>
+<td>A 当日反発</td>
+<td>2,068.0</td>
+<td>2,029.1</td>
+<td>1.92%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 100MA</td>
+<td>1.38</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値2,021.0を維持し、当日高値2,068.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5020" target="_blank" rel="noopener">5020 ＥＮＥＯＳホールディングス</a></td>
+<td>A 当日反発</td>
+<td>1,331.0</td>
+<td>1,300.4</td>
+<td>2.35%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 100MA</td>
+<td>1.03</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値1,299.5を維持し、当日高値1,332.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6301" target="_blank" rel="noopener">6301 コマツ</a></td>
+<td>A 当日反発</td>
+<td>7,065.0</td>
+<td>6,966.3</td>
+<td>1.42%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.77</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値6,990.0を維持し、当日高値7,072.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9147" target="_blank" rel="noopener">9147 ＮＩＰＰＯＮ ＥＸＰＲＥＳＳホールディングス</a></td>
+<td>A 当日反発</td>
+<td>5,559.0</td>
+<td>5,429.7</td>
+<td>2.38%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.87</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値5,431.0を維持し、当日高値5,559.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2502" target="_blank" rel="noopener">2502 アサヒグループホールディングス</a></td>
+<td>A 当日反発</td>
+<td>1,680.5</td>
+<td>1,667.6</td>
+<td>0.77%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.74</td>
+<td>4</td>
+<td>25MA下向き</td>
+<td>反発安値1,663.5を維持し、当日高値1,684.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9201" target="_blank" rel="noopener">9201 日本航空</a></td>
+<td>A 当日反発</td>
+<td>3,002.0</td>
+<td>2,973.9</td>
+<td>0.94%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.72</td>
+<td>4</td>
+<td>25MA下向き</td>
+<td>反発安値2,974.5を維持し、当日高値3,009.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7751" target="_blank" rel="noopener">7751 キヤノン</a></td>
+<td>A 当日反発</td>
+<td>4,593.0</td>
+<td>4,533.6</td>
+<td>1.31%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>1.17</td>
+<td>4</td>
+<td>25MA下向き</td>
+<td>反発安値4,544.0を維持し、当日高値4,593.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8053" target="_blank" rel="noopener">8053 住友商事</a></td>
+<td>A 当日反発</td>
+<td>1,709.0</td>
+<td>1,675.4</td>
+<td>2.01%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 75MA</td>
+<td>0.82</td>
+<td>4</td>
+<td>25MA下向き</td>
+<td>反発安値1,688.0を維持し、当日高値1,724.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8252" target="_blank" rel="noopener">8252 丸井グループ</a></td>
+<td>A 当日反発</td>
+<td>2,989.5</td>
+<td>2,958.9</td>
+<td>1.03%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.66</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>反発安値2,970.5を維持し、当日高値2,993.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1925" target="_blank" rel="noopener">1925 大和ハウス工業</a></td>
+<td>A 当日反発</td>
+<td>4,689.0</td>
+<td>4,631.2</td>
+<td>1.25%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA / 100MA</td>
+<td>1.10</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>反発安値4,649.0を維持し、当日高値4,701.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3289" target="_blank" rel="noopener">3289 東急不動産ホールディングス</a></td>
+<td>A 当日反発</td>
+<td>1,347.5</td>
+<td>1,329.7</td>
+<td>1.34%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA / 100MA</td>
+<td>1.12</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>反発安値1,334.0を維持し、当日高値1,349.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9532" target="_blank" rel="noopener">9532 大阪ガス</a></td>
+<td>A 当日反発</td>
+<td>5,551.0</td>
+<td>5,458.0</td>
+<td>1.70%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA / 75MA</td>
+<td>1.13</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>反発安値5,501.0を維持し、当日高値5,574.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2432" target="_blank" rel="noopener">2432 ディー・エヌ・エー</a></td>
+<td>A 当日反発</td>
+<td>2,496.5</td>
+<td>2,465.8</td>
+<td>1.25%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.63</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値2,480.0を維持し、当日高値2,508.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6753" target="_blank" rel="noopener">6753 シャープ</a></td>
+<td>A 当日反発</td>
+<td>641.0</td>
+<td>629.5</td>
+<td>1.83%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.73</td>
+<td>2</td>
+<td>25MA下向き</td>
+<td>反発安値631.5を維持し、当日高値645.6超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6963" target="_blank" rel="noopener">6963 ローム</a></td>
+<td>A 当日反発</td>
+<td>4,699.0</td>
+<td>4,649.8</td>
+<td>1.06%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 100MA</td>
+<td>0.67</td>
+<td>1</td>
+<td>25MA下向き</td>
+<td>反発安値4,596.0を維持し、当日高値4,732.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2871" target="_blank" rel="noopener">2871 ニチレイ</a></td>
+<td>A 当日反発</td>
+<td>2,187.0</td>
+<td>2,178.0</td>
+<td>0.41%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.62</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値2,178.5を維持し、当日高値2,214.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8233" target="_blank" rel="noopener">8233 高島屋</a></td>
+<td>A 当日反発</td>
+<td>2,383.0</td>
+<td>2,319.9</td>
+<td>2.72%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>1.12</td>
+<td>7</td>
+<td>25MA下向き</td>
+<td>反発安値2,320.0を維持し、当日高値2,397.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8308" target="_blank" rel="noopener">8308 りそなホールディングス</a></td>
+<td>A 当日反発</td>
+<td>2,378.0</td>
+<td>2,325.3</td>
+<td>2.27%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.92</td>
+<td>6</td>
+<td>25MA下向き</td>
+<td>反発安値2,327.0を維持し、当日高値2,390.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6302" target="_blank" rel="noopener">6302 住友重機械工業</a></td>
+<td>A 当日反発</td>
+<td>5,615.0</td>
+<td>5,546.8</td>
+<td>1.23%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.76</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>反発安値5,495.0を維持し、当日高値5,640.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6752" target="_blank" rel="noopener">6752 パナソニック ホールディングス</a></td>
+<td>A 当日反発</td>
+<td>4,303.0</td>
+<td>4,223.9</td>
+<td>1.87%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>1.05</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>反発安値4,224.0を維持し、当日高値4,337.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9022" target="_blank" rel="noopener">9022 東海旅客鉄道</a></td>
+<td>A 当日反発</td>
+<td>3,936.0</td>
+<td>3,891.3</td>
+<td>1.15%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>25MA</td>
+<td>1.13</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>反発安値3,879.0を維持し、当日高値3,941.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8253" target="_blank" rel="noopener">8253 クレディセゾン</a></td>
+<td>C MA直上</td>
+<td>4,657.0</td>
+<td>4,648.4</td>
+<td>0.19%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.51</td>
+<td>5</td>
+<td>25MA下向き</td>
+<td>25MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5301" target="_blank" rel="noopener">5301 東海カーボン</a></td>
+<td>C MA直上</td>
+<td>1,685.0</td>
+<td>1,673.6</td>
+<td>0.68%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.59</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>25MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5401" target="_blank" rel="noopener">5401 日本製鉄</a></td>
+<td>C MA直上</td>
+<td>659.4</td>
+<td>652.2</td>
+<td>1.10%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.71</td>
+<td>3</td>
+<td>25MA下向き</td>
+<td>25MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6701" target="_blank" rel="noopener">6701 ＮＥＣ</a></td>
+<td>C MA直上</td>
+<td>4,656.0</td>
+<td>4,652.3</td>
+<td>0.08%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.95</td>
+<td>1</td>
+<td>特記事項なし</td>
+<td>25MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4307" target="_blank" rel="noopener">4307 野村総合研究所</a></td>
+<td>C MA直上</td>
+<td>5,012.0</td>
+<td>4,985.0</td>
+<td>0.54%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.77</td>
+<td>1</td>
+<td>25MA下向き</td>
+<td>25MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4183" target="_blank" rel="noopener">4183 三井化学</a></td>
+<td>D MA直下</td>
+<td>2,143.0</td>
+<td>2,162.4</td>
+<td>-0.90%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA / 100MA</td>
+<td>0.90</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1928" target="_blank" rel="noopener">1928 積水ハウス</a></td>
+<td>D MA直下</td>
+<td>3,471.0</td>
+<td>3,482.1</td>
+<td>-0.32%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>100MA / 200MA</td>
+<td>1.11</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6902" target="_blank" rel="noopener">6902 デンソー</a></td>
+<td>D MA直下</td>
+<td>1,948.5</td>
+<td>1,974.5</td>
+<td>-1.32%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>75MA / 100MA</td>
+<td>0.70</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3861" target="_blank" rel="noopener">3861 王子ホールディングス</a></td>
+<td>D MA直下</td>
+<td>866.7</td>
+<td>868.8</td>
+<td>-0.24%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>0.66</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3405" target="_blank" rel="noopener">3405 クラレ</a></td>
+<td>D MA直下</td>
+<td>1,839.0</td>
+<td>1,848.2</td>
+<td>-0.50%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.65</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9531" target="_blank" rel="noopener">9531 東京ガス</a></td>
+<td>D MA直下</td>
+<td>6,090.0</td>
+<td>6,093.2</td>
+<td>-0.05%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>1.36</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6473" target="_blank" rel="noopener">6473 ジェイテクト</a></td>
+<td>D MA直下</td>
+<td>2,077.5</td>
+<td>2,106.6</td>
+<td>-1.38%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.75</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6326" target="_blank" rel="noopener">6326 クボタ</a></td>
+<td>D MA直下</td>
+<td>2,712.0</td>
+<td>2,722.3</td>
+<td>-0.38%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>1.08</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3092" target="_blank" rel="noopener">3092 ＺＯＺＯ</a></td>
+<td>D MA直下</td>
+<td>1,133.0</td>
+<td>1,148.8</td>
+<td>-1.38%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.72</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8604" target="_blank" rel="noopener">8604 野村ホールディングス</a></td>
+<td>D MA直下</td>
+<td>1,535.0</td>
+<td>1,557.8</td>
+<td>-1.47%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.80</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A543A" target="_blank" rel="noopener">543A アーキオン</a></td>
+<td>D MA直下</td>
+<td>280.0</td>
+<td>280.6</td>
+<td>-0.20%</td>
+<td>上向き</td>
+<td>UNKNOWN</td>
+<td>なし</td>
+<td>0.60</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4151" target="_blank" rel="noopener">4151 協和キリン</a></td>
+<td>D MA直下</td>
+<td>2,576.5</td>
+<td>2,589.8</td>
+<td>-0.52%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.94</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9020" target="_blank" rel="noopener">9020 東日本旅客鉄道</a></td>
+<td>D MA直下</td>
+<td>3,539.0</td>
+<td>3,561.5</td>
+<td>-0.63%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.22</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8801" target="_blank" rel="noopener">8801 三井不動産</a></td>
+<td>D MA直下</td>
+<td>1,498.0</td>
+<td>1,516.6</td>
+<td>-1.23%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.75</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4324" target="_blank" rel="noopener">4324 電通グループ</a></td>
+<td>D MA直下</td>
+<td>3,519.0</td>
+<td>3,568.6</td>
+<td>-1.39%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.67</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5101" target="_blank" rel="noopener">5101 横浜ゴム</a></td>
+<td>D MA直下</td>
+<td>7,494.0</td>
+<td>7,600.4</td>
+<td>-1.40%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.39</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6762" target="_blank" rel="noopener">6762 ＴＤＫ</a></td>
+<td>D MA直下</td>
+<td>3,041.0</td>
+<td>3,048.6</td>
+<td>-0.25%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.83</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6146" target="_blank" rel="noopener">6146 ディスコ</a></td>
+<td>D MA直下</td>
+<td>61,360.0</td>
+<td>62,097.6</td>
+<td>-1.19%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.72</td>
+<td>2</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1721" target="_blank" rel="noopener">1721 コムシスホールディングス</a></td>
+<td>D MA直下</td>
+<td>5,257.0</td>
+<td>5,262.9</td>
+<td>-0.11%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.63</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4519" target="_blank" rel="noopener">4519 中外製薬</a></td>
+<td>D MA直下</td>
+<td>7,011.0</td>
+<td>7,024.2</td>
+<td>-0.19%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.70</td>
+<td>1</td>
+<td>25MA下向き / 回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6988" target="_blank" rel="noopener">6988 日東電工</a></td>
+<td>D MA直下</td>
+<td>3,414.0</td>
+<td>3,421.1</td>
+<td>-0.21%</td>
+<td>横ばい</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.81</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6501" target="_blank" rel="noopener">6501 日立製作所</a></td>
+<td>D MA直下</td>
+<td>5,196.0</td>
+<td>5,243.0</td>
+<td>-0.90%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.97</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7011" target="_blank" rel="noopener">7011 三菱重工業</a></td>
+<td>D MA直下</td>
+<td>3,932.0</td>
+<td>3,976.1</td>
+<td>-1.11%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.96</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9202" target="_blank" rel="noopener">9202 ＡＮＡホールディングス</a></td>
+<td>D MA直下</td>
+<td>3,040.0</td>
+<td>3,082.3</td>
+<td>-1.37%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.89</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で25MAを回復するまで待つ</td>
+</tr>
+</tbody></table></div>
+<h2>5MA: デイトレ・短期の勢い</h2>
+<p>付近判定は±1.0%、タッチ許容はMAの上側0.5%です。</p>
+<div class="table-wrap"><table><thead><tr>
+<th>銘柄</th>
+<th>判定</th>
+<th>終値</th>
+<th>MA</th>
+<th>乖離率</th>
+<th>MA方向</th>
+<th>MA配列</th>
+<th>反発確認MA</th>
+<th>出来高比</th>
+<th>強さ</th>
+<th>注意点</th>
+<th>確認条件</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6770" target="_blank" rel="noopener">6770 アルプスアルパイン</a></td>
+<td>A 当日再回復</td>
+<td>2,193.5</td>
+<td>2,178.5</td>
+<td>0.69%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA / 100MA</td>
+<td>1.06</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値2,149.0を維持し、当日高値2,197.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1332" target="_blank" rel="noopener">1332 ニッスイ</a></td>
+<td>A 当日再回復</td>
+<td>1,305.0</td>
+<td>1,296.0</td>
+<td>0.69%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値1,288.5を維持し、当日高値1,305.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5233" target="_blank" rel="noopener">5233 太平洋セメント</a></td>
+<td>A 当日再回復</td>
+<td>4,187.0</td>
+<td>4,162.0</td>
+<td>0.60%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 75MA</td>
+<td>0.52</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値4,100.0を維持し、当日高値4,198.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5406" target="_blank" rel="noopener">5406 神戸製鋼所</a></td>
+<td>A 当日再回復</td>
+<td>2,024.5</td>
+<td>2,015.0</td>
+<td>0.47%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 200MA</td>
+<td>0.55</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値1,997.5を維持し、当日高値2,025.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2768" target="_blank" rel="noopener">2768 双日</a></td>
+<td>A 当日再回復</td>
+<td>5,624.0</td>
+<td>5,566.0</td>
+<td>1.04%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA / 200MA</td>
+<td>0.86</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値5,494.0を維持し、当日高値5,628.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4005" target="_blank" rel="noopener">4005 住友化学</a></td>
+<td>A 当日再回復</td>
+<td>559.8</td>
+<td>530.9</td>
+<td>5.44%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA</td>
+<td>2.21</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値525.0を維持し、当日高値560.8超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8725" target="_blank" rel="noopener">8725 ＭＳ＆ＡＤインシュアランスグループホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>4,945.0</td>
+<td>4,897.6</td>
+<td>0.97%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.87</td>
+<td>7</td>
+<td>5MA下向き</td>
+<td>反発安値4,766.0を維持し、当日高値4,957.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6724" target="_blank" rel="noopener">6724 セイコーエプソン</a></td>
+<td>A 当日再回復</td>
+<td>3,063.0</td>
+<td>3,061.6</td>
+<td>0.05%</td>
+<td>上向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.66</td>
+<td>6</td>
+<td>特記事項なし</td>
+<td>反発安値3,019.0を維持し、当日高値3,063.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6301" target="_blank" rel="noopener">6301 コマツ</a></td>
+<td>A 当日再回復</td>
+<td>7,065.0</td>
+<td>7,060.0</td>
+<td>0.07%</td>
+<td>横ばい</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.77</td>
+<td>6</td>
+<td>特記事項なし</td>
+<td>反発安値6,990.0を維持し、当日高値7,072.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9147" target="_blank" rel="noopener">9147 ＮＩＰＰＯＮ ＥＸＰＲＥＳＳホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>5,559.0</td>
+<td>5,553.2</td>
+<td>0.10%</td>
+<td>横ばい</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.87</td>
+<td>6</td>
+<td>特記事項なし</td>
+<td>反発安値5,431.0を維持し、当日高値5,559.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8309" target="_blank" rel="noopener">8309 三井住友トラストグループ</a></td>
+<td>A 当日再回復</td>
+<td>1,715.5</td>
+<td>1,711.4</td>
+<td>0.24%</td>
+<td>上向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.61</td>
+<td>6</td>
+<td>特記事項なし</td>
+<td>反発安値1,684.5を維持し、当日高値1,715.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7951" target="_blank" rel="noopener">7951 ヤマハ</a></td>
+<td>A 当日再回復</td>
+<td>1,309.0</td>
+<td>1,303.2</td>
+<td>0.45%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA / 25MA</td>
+<td>0.64</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値1,285.0を維持し、当日高値1,314.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8697" target="_blank" rel="noopener">8697 日本取引所グループ</a></td>
+<td>A 当日再回復</td>
+<td>2,238.0</td>
+<td>2,213.7</td>
+<td>1.10%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.79</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値2,199.5を維持し、当日高値2,246.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7269" target="_blank" rel="noopener">7269 スズキ</a></td>
+<td>A 当日再回復</td>
+<td>2,103.5</td>
+<td>2,077.2</td>
+<td>1.27%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>1.02</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値2,070.5を維持し、当日高値2,108.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5019" target="_blank" rel="noopener">5019 出光興産</a></td>
+<td>A 当日再回復</td>
+<td>1,383.5</td>
+<td>1,354.1</td>
+<td>2.17%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA</td>
+<td>1.07</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値1,340.0を維持し、当日高値1,383.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9201" target="_blank" rel="noopener">9201 日本航空</a></td>
+<td>A 当日再回復</td>
+<td>3,002.0</td>
+<td>3,000.1</td>
+<td>0.06%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.72</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値2,974.5を維持し、当日高値3,009.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4902" target="_blank" rel="noopener">4902 コニカミノルタ</a></td>
+<td>A 当日再回復</td>
+<td>648.3</td>
+<td>643.9</td>
+<td>0.68%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.52</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値635.8を維持し、当日高値648.3超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9735" target="_blank" rel="noopener">9735 セコム</a></td>
+<td>A 当日再回復</td>
+<td>6,413.0</td>
+<td>6,382.2</td>
+<td>0.48%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 100MA</td>
+<td>0.57</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値6,357.0を維持し、当日高値6,426.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8031" target="_blank" rel="noopener">8031 三井物産</a></td>
+<td>A 当日再回復</td>
+<td>4,899.0</td>
+<td>4,824.2</td>
+<td>1.55%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.91</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値4,769.0を維持し、当日高値4,899.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9501" target="_blank" rel="noopener">9501 東京電力ホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>549.3</td>
+<td>524.7</td>
+<td>4.69%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 75MA</td>
+<td>1.50</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値518.8を維持し、当日高値549.3超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3861" target="_blank" rel="noopener">3861 王子ホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>866.7</td>
+<td>862.2</td>
+<td>0.53%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>0.66</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値860.2を維持し、当日高値873.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7731" target="_blank" rel="noopener">7731 ニコン</a></td>
+<td>A 当日再回復</td>
+<td>2,008.0</td>
+<td>1,979.4</td>
+<td>1.44%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 200MA</td>
+<td>0.85</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値1,927.5を維持し、当日高値2,016.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8058" target="_blank" rel="noopener">8058 三菱商事</a></td>
+<td>A 当日再回復</td>
+<td>4,794.0</td>
+<td>4,725.0</td>
+<td>1.46%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.95</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値4,693.0を維持し、当日高値4,794.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9434" target="_blank" rel="noopener">9434 ソフトバンク</a></td>
+<td>A 当日再回復</td>
+<td>233.8</td>
+<td>233.6</td>
+<td>0.07%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA</td>
+<td>1.01</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値232.5を維持し、当日高値236.1超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2914" target="_blank" rel="noopener">2914 ＪＴ</a></td>
+<td>A 当日再回復</td>
+<td>6,980.0</td>
+<td>6,959.2</td>
+<td>0.30%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA</td>
+<td>0.70</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値6,893.0を維持し、当日高値6,980.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3401" target="_blank" rel="noopener">3401 帝人</a></td>
+<td>A 当日再回復</td>
+<td>1,753.0</td>
+<td>1,742.8</td>
+<td>0.59%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA</td>
+<td>0.80</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値1,730.5を維持し、当日高値1,759.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5108" target="_blank" rel="noopener">5108 ブリヂストン</a></td>
+<td>A 当日再回復</td>
+<td>4,117.0</td>
+<td>4,077.8</td>
+<td>0.96%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA</td>
+<td>0.48</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値4,057.0を維持し、当日高値4,117.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7752" target="_blank" rel="noopener">7752 リコー</a></td>
+<td>A 当日再回復</td>
+<td>1,642.0</td>
+<td>1,612.3</td>
+<td>1.84%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA</td>
+<td>2.84</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値1,601.0を維持し、当日高値1,655.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4543" target="_blank" rel="noopener">4543 テルモ</a></td>
+<td>A 当日再回復</td>
+<td>2,569.0</td>
+<td>2,563.1</td>
+<td>0.23%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>5MA</td>
+<td>0.75</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値2,526.5を維持し、当日高値2,573.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6758" target="_blank" rel="noopener">6758 ソニーグループ</a></td>
+<td>A 当日再回復</td>
+<td>3,785.0</td>
+<td>3,749.8</td>
+<td>0.94%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.57</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値3,735.0を維持し、当日高値3,785.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3405" target="_blank" rel="noopener">3405 クラレ</a></td>
+<td>A 当日再回復</td>
+<td>1,839.0</td>
+<td>1,836.6</td>
+<td>0.13%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.65</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値1,806.0を維持し、当日高値1,839.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8601" target="_blank" rel="noopener">8601 大和証券グループ本社</a></td>
+<td>A 当日再回復</td>
+<td>1,779.0</td>
+<td>1,764.1</td>
+<td>0.84%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.85</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値1,742.5を維持し、当日高値1,785.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8630" target="_blank" rel="noopener">8630 ＳＯＭＰＯホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>6,757.0</td>
+<td>6,686.8</td>
+<td>1.05%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>1.06</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値6,579.0を維持し、当日高値6,765.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8766" target="_blank" rel="noopener">8766 東京海上ホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>7,347.0</td>
+<td>7,334.6</td>
+<td>0.17%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.94</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値7,206.0を維持し、当日高値7,383.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9531" target="_blank" rel="noopener">9531 東京ガス</a></td>
+<td>A 当日再回復</td>
+<td>6,090.0</td>
+<td>6,034.2</td>
+<td>0.92%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>1.36</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値6,011.0を維持し、当日高値6,100.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9064" target="_blank" rel="noopener">9064 ヤマトホールディングス</a></td>
+<td>A 当日再回復</td>
+<td>1,931.5</td>
+<td>1,929.6</td>
+<td>0.10%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.62</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値1,913.5を維持し、当日高値1,938.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6326" target="_blank" rel="noopener">6326 クボタ</a></td>
+<td>A 当日再回復</td>
+<td>2,712.0</td>
+<td>2,639.2</td>
+<td>2.76%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>1.08</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値2,619.0を維持し、当日高値2,712.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8002" target="_blank" rel="noopener">8002 丸紅</a></td>
+<td>A 当日再回復</td>
+<td>4,893.0</td>
+<td>4,880.0</td>
+<td>0.27%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.73</td>
+<td>1</td>
+<td>5MA下向き</td>
+<td>反発安値4,825.0を維持し、当日高値4,908.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7202" target="_blank" rel="noopener">7202 いすゞ自動車</a></td>
+<td>A 当日再回復</td>
+<td>2,228.5</td>
+<td>2,225.5</td>
+<td>0.13%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.86</td>
+<td>0</td>
+<td>5MA下向き</td>
+<td>反発安値2,211.5を維持し、当日高値2,246.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8830" target="_blank" rel="noopener">8830 住友不動産</a></td>
+<td>A 当日再回復</td>
+<td>3,339.0</td>
+<td>3,334.2</td>
+<td>0.14%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.96</td>
+<td>0</td>
+<td>既存判定は新規買い停止 / リスクスコア高</td>
+<td>反発安値3,308.0を維持し、当日高値3,360.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2002" target="_blank" rel="noopener">2002 日清製粉グループ本社</a></td>
+<td>A 当日反発</td>
+<td>2,068.0</td>
+<td>2,032.2</td>
+<td>1.76%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA / 100MA</td>
+<td>1.38</td>
+<td>7</td>
+<td>5MA下向き</td>
+<td>反発安値2,021.0を維持し、当日高値2,068.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9502" target="_blank" rel="noopener">9502 中部電力</a></td>
+<td>A 当日反発</td>
+<td>2,906.5</td>
+<td>2,855.7</td>
+<td>1.78%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 75MA / 100MA</td>
+<td>1.32</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>反発安値2,860.5を維持し、当日高値2,921.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4755" target="_blank" rel="noopener">4755 楽天グループ</a></td>
+<td>A 当日反発</td>
+<td>780.8</td>
+<td>773.8</td>
+<td>0.91%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 75MA / 100MA</td>
+<td>0.56</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値769.5を維持し、当日高値781.1超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9001" target="_blank" rel="noopener">9001 東武鉄道</a></td>
+<td>A 当日反発</td>
+<td>3,014.0</td>
+<td>2,969.4</td>
+<td>1.50%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>1.41</td>
+<td>7</td>
+<td>5MA下向き</td>
+<td>反発安値2,978.0を維持し、当日高値3,014.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9433" target="_blank" rel="noopener">9433 ＫＤＤＩ</a></td>
+<td>A 当日反発</td>
+<td>2,915.5</td>
+<td>2,860.9</td>
+<td>1.91%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>1.37</td>
+<td>7</td>
+<td>5MA下向き</td>
+<td>反発安値2,860.0を維持し、当日高値2,930.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2502" target="_blank" rel="noopener">2502 アサヒグループホールディングス</a></td>
+<td>A 当日反発</td>
+<td>1,680.5</td>
+<td>1,663.4</td>
+<td>1.03%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>0.74</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値1,663.5を維持し、当日高値1,684.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7751" target="_blank" rel="noopener">7751 キヤノン</a></td>
+<td>A 当日反発</td>
+<td>4,593.0</td>
+<td>4,528.8</td>
+<td>1.42%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA / 25MA</td>
+<td>1.17</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>反発安値4,544.0を維持し、当日高値4,593.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8252" target="_blank" rel="noopener">8252 丸井グループ</a></td>
+<td>A 当日反発</td>
+<td>2,989.5</td>
+<td>2,960.3</td>
+<td>0.99%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.66</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値2,970.5を維持し、当日高値2,993.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2282" target="_blank" rel="noopener">2282 日本ハム</a></td>
+<td>A 当日反発</td>
+<td>6,423.0</td>
+<td>6,358.4</td>
+<td>1.02%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 100MA</td>
+<td>1.34</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値6,385.0を維持し、当日高値6,508.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2432" target="_blank" rel="noopener">2432 ディー・エヌ・エー</a></td>
+<td>A 当日反発</td>
+<td>2,496.5</td>
+<td>2,483.3</td>
+<td>0.53%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.63</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値2,480.0を維持し、当日高値2,508.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8804" target="_blank" rel="noopener">8804 東京建物</a></td>
+<td>A 当日反発</td>
+<td>3,411.0</td>
+<td>3,361.6</td>
+<td>1.47%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.88</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値3,369.0を維持し、当日高値3,417.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7201" target="_blank" rel="noopener">7201 日産自動車</a></td>
+<td>A 当日反発</td>
+<td>336.0</td>
+<td>330.6</td>
+<td>1.64%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.71</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値330.5を維持し、当日高値338.6超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6753" target="_blank" rel="noopener">6753 シャープ</a></td>
+<td>A 当日反発</td>
+<td>641.0</td>
+<td>629.6</td>
+<td>1.81%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.73</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値631.5を維持し、当日高値645.6超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8267" target="_blank" rel="noopener">8267 イオン</a></td>
+<td>A 当日反発</td>
+<td>1,385.5</td>
+<td>1,369.2</td>
+<td>1.19%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA / 25MA</td>
+<td>0.89</td>
+<td>1</td>
+<td>5MA下向き</td>
+<td>反発安値1,370.0を維持し、当日高値1,387.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4502" target="_blank" rel="noopener">4502 武田薬品工業</a></td>
+<td>A 当日反発</td>
+<td>5,764.0</td>
+<td>5,714.6</td>
+<td>0.86%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>5MA</td>
+<td>0.77</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>反発安値5,729.0を維持し、当日高値5,812.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1808" target="_blank" rel="noopener">1808 長谷工コーポレーション</a></td>
+<td>A 当日反発</td>
+<td>2,856.5</td>
+<td>2,806.1</td>
+<td>1.80%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>1.38</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>反発安値2,816.5を維持し、当日高値2,862.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4901" target="_blank" rel="noopener">4901 富士フイルムホールディングス</a></td>
+<td>A 当日反発</td>
+<td>3,217.0</td>
+<td>3,199.8</td>
+<td>0.54%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.44</td>
+<td>2</td>
+<td>5MA下向き / 既存判定は新規買い停止 / リスクスコア高</td>
+<td>反発安値3,189.0を維持し、当日高値3,232.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8802" target="_blank" rel="noopener">8802 三菱地所</a></td>
+<td>A 当日反発</td>
+<td>3,687.0</td>
+<td>3,651.4</td>
+<td>0.97%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.98</td>
+<td>2</td>
+<td>5MA下向き / 既存判定は新規買い停止 / リスクスコア高</td>
+<td>反発安値3,645.0を維持し、当日高値3,700.0超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3092" target="_blank" rel="noopener">3092 ＺＯＺＯ</a></td>
+<td>A 当日反発</td>
+<td>1,133.0</td>
+<td>1,117.7</td>
+<td>1.37%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>5MA</td>
+<td>0.72</td>
+<td>2</td>
+<td>5MA下向き</td>
+<td>反発安値1,122.0を維持し、当日高値1,137.5超えを出来高付きで確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6532" target="_blank" rel="noopener">6532 ベイカレント</a></td>
+<td>C MA直上</td>
+<td>7,485.0</td>
+<td>7,479.0</td>
+<td>0.08%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>なし</td>
+<td>0.92</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2503" target="_blank" rel="noopener">2503 キリンホールディングス</a></td>
+<td>C MA直上</td>
+<td>3,038.0</td>
+<td>3,013.7</td>
+<td>0.81%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>なし</td>
+<td>0.91</td>
+<td>6</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4578" target="_blank" rel="noopener">4578 大塚ホールディングス</a></td>
+<td>C MA直上</td>
+<td>12,195.0</td>
+<td>12,181.0</td>
+<td>0.11%</td>
+<td>下向き</td>
+<td>完全上昇配列</td>
+<td>なし</td>
+<td>0.66</td>
+<td>5</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9766" target="_blank" rel="noopener">9766 コナミグループ</a></td>
+<td>C MA直上</td>
+<td>21,885.0</td>
+<td>21,772.0</td>
+<td>0.52%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.66</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9602" target="_blank" rel="noopener">9602 東宝</a></td>
+<td>C MA直上</td>
+<td>1,543.5</td>
+<td>1,529.0</td>
+<td>0.95%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.80</td>
+<td>4</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4324" target="_blank" rel="noopener">4324 電通グループ</a></td>
+<td>C MA直上</td>
+<td>3,519.0</td>
+<td>3,517.8</td>
+<td>0.03%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.67</td>
+<td>3</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4519" target="_blank" rel="noopener">4519 中外製薬</a></td>
+<td>C MA直上</td>
+<td>7,011.0</td>
+<td>6,941.6</td>
+<td>1.00%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.70</td>
+<td>1</td>
+<td>5MA下向き</td>
+<td>5MAを終値で維持し、陽線または安値切り上げを確認</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4183" target="_blank" rel="noopener">4183 三井化学</a></td>
+<td>D MA直下</td>
+<td>2,143.0</td>
+<td>2,148.2</td>
+<td>-0.24%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA / 100MA</td>
+<td>0.90</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8053" target="_blank" rel="noopener">8053 住友商事</a></td>
+<td>D MA直下</td>
+<td>1,709.0</td>
+<td>1,719.2</td>
+<td>-0.59%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA / 75MA</td>
+<td>0.82</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A7186" target="_blank" rel="noopener">7186 横浜フィナンシャルグループ</a></td>
+<td>D MA直下</td>
+<td>1,882.5</td>
+<td>1,887.0</td>
+<td>-0.24%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>1.12</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8354" target="_blank" rel="noopener">8354 ふくおかフィナンシャルグループ</a></td>
+<td>D MA直下</td>
+<td>7,564.0</td>
+<td>7,608.8</td>
+<td>-0.59%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.45</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8331" target="_blank" rel="noopener">8331 千葉銀行</a></td>
+<td>D MA直下</td>
+<td>2,753.5</td>
+<td>2,773.5</td>
+<td>-0.72%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>25MA</td>
+<td>0.73</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8795" target="_blank" rel="noopener">8795 Ｔ＆Ｄホールディングス</a></td>
+<td>D MA直下</td>
+<td>4,795.0</td>
+<td>4,817.8</td>
+<td>-0.47%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>1.03</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8750" target="_blank" rel="noopener">8750 第一ライフグループ</a></td>
+<td>D MA直下</td>
+<td>1,788.5</td>
+<td>1,804.1</td>
+<td>-0.86%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>75MA</td>
+<td>0.64</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8015" target="_blank" rel="noopener">8015 豊田通商</a></td>
+<td>D MA直下</td>
+<td>7,226.0</td>
+<td>7,228.0</td>
+<td>-0.03%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.57</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6857" target="_blank" rel="noopener">6857 アドバンテスト</a></td>
+<td>D MA直下</td>
+<td>35,900.0</td>
+<td>35,984.0</td>
+<td>-0.23%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.83</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5831" target="_blank" rel="noopener">5831 しずおかフィナンシャルグループ</a></td>
+<td>D MA直下</td>
+<td>3,450.0</td>
+<td>3,469.2</td>
+<td>-0.55%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.82</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4208" target="_blank" rel="noopener">4208 ＵＢＥ</a></td>
+<td>D MA直下</td>
+<td>3,568.0</td>
+<td>3,592.2</td>
+<td>-0.67%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.50</td>
+<td>6</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8253" target="_blank" rel="noopener">8253 クレディセゾン</a></td>
+<td>D MA直下</td>
+<td>4,657.0</td>
+<td>4,662.2</td>
+<td>-0.11%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.51</td>
+<td>5</td>
+<td>5MA下向き / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4021" target="_blank" rel="noopener">4021 日産化学</a></td>
+<td>D MA直下</td>
+<td>7,978.0</td>
+<td>8,023.8</td>
+<td>-0.57%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.75</td>
+<td>5</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6098" target="_blank" rel="noopener">6098 リクルートホールディングス</a></td>
+<td>D MA直下</td>
+<td>15,900.0</td>
+<td>16,037.0</td>
+<td>-0.85%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.60</td>
+<td>5</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3402" target="_blank" rel="noopener">3402 東レ</a></td>
+<td>D MA直下</td>
+<td>1,298.5</td>
+<td>1,311.1</td>
+<td>-0.96%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.40</td>
+<td>5</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8604" target="_blank" rel="noopener">8604 野村ホールディングス</a></td>
+<td>D MA直下</td>
+<td>1,535.0</td>
+<td>1,535.7</td>
+<td>-0.05%</td>
+<td>下向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.80</td>
+<td>4</td>
+<td>5MA下向き / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6178" target="_blank" rel="noopener">6178 日本郵政</a></td>
+<td>D MA直下</td>
+<td>2,336.0</td>
+<td>2,350.9</td>
+<td>-0.63%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>1.32</td>
+<td>4</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A543A" target="_blank" rel="noopener">543A アーキオン</a></td>
+<td>D MA直下</td>
+<td>280.0</td>
+<td>280.2</td>
+<td>-0.07%</td>
+<td>上向き</td>
+<td>UNKNOWN</td>
+<td>なし</td>
+<td>0.60</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4151" target="_blank" rel="noopener">4151 協和キリン</a></td>
+<td>D MA直下</td>
+<td>2,576.5</td>
+<td>2,579.3</td>
+<td>-0.11%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.94</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5101" target="_blank" rel="noopener">5101 横浜ゴム</a></td>
+<td>D MA直下</td>
+<td>7,494.0</td>
+<td>7,528.2</td>
+<td>-0.45%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.39</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2501" target="_blank" rel="noopener">2501 サッポロホールディングス</a></td>
+<td>D MA直下</td>
+<td>1,916.5</td>
+<td>1,927.5</td>
+<td>-0.57%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.63</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A8591" target="_blank" rel="noopener">8591 オリックス</a></td>
+<td>D MA直下</td>
+<td>6,115.0</td>
+<td>6,161.6</td>
+<td>-0.76%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.67</td>
+<td>3</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3099" target="_blank" rel="noopener">3099 三越伊勢丹ホールディングス</a></td>
+<td>D MA直下</td>
+<td>3,473.0</td>
+<td>3,494.2</td>
+<td>-0.61%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.49</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A2413" target="_blank" rel="noopener">2413 エムスリー</a></td>
+<td>D MA直下</td>
+<td>1,708.0</td>
+<td>1,723.7</td>
+<td>-0.91%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.43</td>
+<td>2</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6146" target="_blank" rel="noopener">6146 ディスコ</a></td>
+<td>D MA直下</td>
+<td>61,360.0</td>
+<td>61,940.0</td>
+<td>-0.94%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.72</td>
+<td>2</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6702" target="_blank" rel="noopener">6702 富士通</a></td>
+<td>D MA直下</td>
+<td>3,646.0</td>
+<td>3,652.2</td>
+<td>-0.17%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.62</td>
+<td>1</td>
+<td>5MA下向き / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3382" target="_blank" rel="noopener">3382 セブン＆アイ・ホールディングス</a></td>
+<td>D MA直下</td>
+<td>2,030.5</td>
+<td>2,034.2</td>
+<td>-0.18%</td>
+<td>下向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.18</td>
+<td>1</td>
+<td>5MA下向き / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6526" target="_blank" rel="noopener">6526 ソシオネクスト</a></td>
+<td>D MA直下</td>
+<td>1,990.0</td>
+<td>1,993.8</td>
+<td>-0.19%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.34</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A9202" target="_blank" rel="noopener">9202 ＡＮＡホールディングス</a></td>
+<td>D MA直下</td>
+<td>3,040.0</td>
+<td>3,047.4</td>
+<td>-0.24%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.89</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5201" target="_blank" rel="noopener">5201 ＡＧＣ</a></td>
+<td>D MA直下</td>
+<td>5,802.0</td>
+<td>5,824.6</td>
+<td>-0.39%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>1.05</td>
+<td>1</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A6988" target="_blank" rel="noopener">6988 日東電工</a></td>
+<td>D MA直下</td>
+<td>3,414.0</td>
+<td>3,430.4</td>
+<td>-0.48%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.81</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1721" target="_blank" rel="noopener">1721 コムシスホールディングス</a></td>
+<td>D MA直下</td>
+<td>5,257.0</td>
+<td>5,288.0</td>
+<td>-0.59%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.63</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A3407" target="_blank" rel="noopener">3407 旭化成</a></td>
+<td>D MA直下</td>
+<td>1,641.5</td>
+<td>1,656.9</td>
+<td>-0.93%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.63</td>
+<td>1</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A5332" target="_blank" rel="noopener">5332 ＴＯＴＯ</a></td>
+<td>D MA直下</td>
+<td>6,351.0</td>
+<td>6,382.0</td>
+<td>-0.49%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.69</td>
+<td>0</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A4042" target="_blank" rel="noopener">4042 東ソー</a></td>
+<td>D MA直下</td>
+<td>2,656.0</td>
+<td>2,669.4</td>
+<td>-0.50%</td>
+<td>上向き</td>
+<td>200MA上・配列未完成</td>
+<td>なし</td>
+<td>0.81</td>
+<td>0</td>
+<td>回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+<tr>
+<td><a href="https://jp.tradingview.com/chart/y1UThZTZ/?symbol=TSE%3A1803" target="_blank" rel="noopener">1803 清水建設</a></td>
+<td>D MA直下</td>
+<td>2,336.5</td>
+<td>2,355.7</td>
+<td>-0.82%</td>
+<td>上向き</td>
+<td>200MA下</td>
+<td>なし</td>
+<td>0.75</td>
+<td>0</td>
+<td>既存判定は新規買い停止 / リスクスコア高 / 回復確認前</td>
+<td>終値で5MAを回復するまで待つ</td>
+</tr>
+</tbody></table></div>
+<h2>読み方</h2>
+<ul>
+<li>5MA: 変化が速くノイズも多い。単独では買わず、日中の勢い確認に使う。</li>
+<li>25MA: 短期スイングの中心。上向き25MAへの初押しを優先する。</li>
+<li>75MA・100MA: 中期調整の支持候補。下向きなら戻り売りに注意する。</li>
+<li>200MA: 長期トレンドの分岐。下向き200MAの反発は優先度を落とす。</li>
+<li>複数MA反発: 一点にMAが密集している可能性がある。TradingViewで位置関係を必ず確認する。</li>
+<li>D MA直下: 抵抗線になっている可能性があるため、終値回復まで待つ。</li>
+</ul>
+</main>
+</body>
+</html>
